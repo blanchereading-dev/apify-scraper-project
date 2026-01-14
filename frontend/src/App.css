@@ -1,34 +1,161 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* ReEntry Connect MN - Custom Styles */
+
+/* Hero section overlay */
+.hero-overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(27, 59, 90, 0.85) 0%,
+        rgba(27, 59, 90, 0.75) 100%
+    );
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
+/* Card hover effects */
+.resource-card {
+    transition: all 0.2s ease-out;
+}
+
+.resource-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px -10px rgba(27, 59, 90, 0.2);
+}
+
+/* Category badge colors */
+.category-housing {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.category-legal {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.category-employment {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.category-healthcare {
+    background-color: #fce7f3;
+    color: #9d174d;
+}
+
+.category-education {
+    background-color: #e0e7ff;
+    color: #3730a3;
+}
+
+.category-food {
+    background-color: #ffedd5;
+    color: #9a3412;
+}
+
+.category-transportation {
+    background-color: #f3e8ff;
+    color: #6b21a8;
+}
+
+/* Map marker pulse animation */
+.map-marker {
+    position: relative;
+}
+
+.map-marker::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: inherit;
+    opacity: 0.4;
+    animation: marker-pulse 2s ease-out infinite;
+}
+
+@keyframes marker-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
     }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
+/* Chatbot container */
+.chatbot-container {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Search input focus */
+.search-input:focus {
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+}
+
+/* Navigation active state */
+.nav-link-active {
+    position: relative;
+}
+
+.nav-link-active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #0284C7;
+    border-radius: 1px;
+}
+
+/* Button press effect */
+.btn-press:active {
+    transform: scale(0.98);
+}
+
+/* Smooth page transitions */
+.page-transition-enter {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Filter tag styles */
+.filter-tag {
+    transition: all 0.15s ease-out;
+}
+
+.filter-tag:hover {
+    transform: scale(1.02);
+}
+
+.filter-tag.active {
+    background-color: #1B3B5A;
     color: white;
 }
 
-.App-link {
-    color: #61dafb;
+/* Loading skeleton */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #f3f4f6 25%,
+        #e5e7eb 50%,
+        #f3f4f6 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
     }
-    to {
-        transform: rotate(360deg);
+    100% {
+        background-position: -200% 0;
     }
 }
