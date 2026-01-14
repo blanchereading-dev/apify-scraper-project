@@ -137,7 +137,7 @@ async def get_resource(resource_id: str):
     
     return resource
 
-@api_router.post("/resources", response_model=Resource)
+@api_router.post("/resources", response_model=Resource, status_code=201)
 async def create_resource(input_data: ResourceCreate):
     resource_dict = input_data.model_dump()
     resource_obj = Resource(**resource_dict)
