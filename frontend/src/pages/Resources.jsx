@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { 
   Search, 
   Home as HomeIcon, 
@@ -7,8 +8,7 @@ import {
   Briefcase, 
   Heart, 
   GraduationCap, 
-  Utensils, 
-  Car,
+  Utensils,
   MapPin,
   Phone,
   Globe,
@@ -38,7 +38,6 @@ const iconMap = {
   Heart: Heart,
   GraduationCap: GraduationCap,
   Utensils: Utensils,
-  Car: Car,
 };
 
 const categoryColors = {
@@ -48,10 +47,10 @@ const categoryColors = {
   healthcare: { bg: "bg-pink-100", text: "text-pink-700", border: "border-pink-200" },
   education: { bg: "bg-indigo-100", text: "text-indigo-700", border: "border-indigo-200" },
   food: { bg: "bg-orange-100", text: "text-orange-700", border: "border-orange-200" },
-  transportation: { bg: "bg-purple-100", text: "text-purple-700", border: "border-purple-200" },
 };
 
 const Resources = () => {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [resources, setResources] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -61,6 +60,18 @@ const Resources = () => {
   const [viewMode, setViewMode] = useState("list");
   const [selectedResource, setSelectedResource] = useState(null);
 
+  const getCategoryName = (categoryId) => {
+    const names = {
+      housing: t('categories.housing'),
+      legal: t('categories.legal'),
+      employment: t('categories.employment'),
+      healthcare: t('categories.healthcare'),
+      education: t('categories.education'),
+      food: t('categories.food'),
+    };
+    return names[categoryId] || categoryId;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -69,8 +80,9 @@ const Resources = () => {
           axios.get(`${API}/resources`),
           axios.get(`${API}/categories`)
         ]);
-        setResources(resRes.data);
-        setCategories(catRes.data);
+        // Filter out transportation resources and category
+        setResources(resRes.data.filter(r => r.category !== 'transportation'));
+        setCategories(catRes.data.filter(c => c.id !== 'transportation'));
       } catch (e) {
         console.error("Error fetching data:", e);
       } finally {
@@ -132,7 +144,7 @@ const Resources = () => {
               </CardTitle>
               <Badge className={`${colors.bg} ${colors.text} ${colors.border} font-medium`}>
                 <IconComponent className="w-3 h-3 mr-1" />
-                {categoryInfo.name}
+                {getCategoryName(resource.category)}
               </Badge>
             </div>
           </div>
@@ -189,7 +201,7 @@ const Resources = () => {
             <div>
               <Badge className={`${colors.bg} ${colors.text} ${colors.border} font-medium mb-2`}>
                 <IconComponent className="w-3 h-3 mr-1" />
-                {categoryInfo.name}
+                {getCategoryName(resource.category)}
               </Badge>
               <SheetTitle className="text-xl font-bold text-[#0F172A]">
                 {resource.name}
@@ -205,7 +217,7 @@ const Resources = () => {
             </p>
 
             <div className="space-y-4">
-              <h4 className="font-semibold text-[#0F172A]">Contact Information</h4>
+              <h4 className="font-semibold text-[#0F172A]">{t('resourceDetail.contactInfo')}</h4>
               
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
@@ -213,7 +225,7 @@ const Resources = () => {
                     <MapPin className="w-5 h-5 text-slate-600" />
                   </div>
                   <div>
-                    <p className="font-medium text-[#0F172A]">Address</p>
+                    <p className="font-medium text-[#0F172A]">{t('resourceDetail.address')}</p>
                     <p className="text-slate-600 text-sm">
                       {resource.address}<br />
                       {resource.city}, {resource.state} {resource.zip_code}
@@ -227,7 +239,7 @@ const Resources = () => {
                       <Phone className="w-5 h-5 text-slate-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-[#0F172A]">Phone</p>
+                      <p className="font-medium text-[#0F172A]">{t('resourceDetail.phone')}</p>
                       <a href={`tel:${resource.phone}`} className="text-[#0284C7] hover:underline text-sm">
                         {resource.phone}
                       </a>
@@ -241,7 +253,7 @@ const Resources = () => {
                       <Globe className="w-5 h-5 text-slate-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-[#0F172A]">Website</p>
+                      <p className="font-medium text-[#0F172A]">{t('resourceDetail.website')}</p>
                       <a 
                         href={resource.website} 
                         target="_blank" 
@@ -260,7 +272,7 @@ const Resources = () => {
                       <Clock className="w-5 h-5 text-slate-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-[#0F172A]">Hours</p>
+                      <p className="font-medium text-[#0F172A]">{t('resourceDetail.hours')}</p>
                       <p className="text-slate-600 text-sm">{resource.hours}</p>
                     </div>
                   </div>
@@ -270,7 +282,7 @@ const Resources = () => {
 
             {resource.services.length > 0 && (
               <div className="space-y-3">
-                <h4 className="font-semibold text-[#0F172A]">Services Offered</h4>
+                <h4 className="font-semibold text-[#0F172A]">{t('resourceDetail.services')}</h4>
                 <div className="flex flex-wrap gap-2">
                   {resource.services.map((service, idx) => (
                     <Badge 
@@ -287,7 +299,7 @@ const Resources = () => {
 
             {resource.eligibility && (
               <div className="space-y-2">
-                <h4 className="font-semibold text-[#0F172A]">Eligibility</h4>
+                <h4 className="font-semibold text-[#0F172A]">{t('resourceDetail.eligibility')}</h4>
                 <p className="text-slate-600 text-sm">{resource.eligibility}</p>
               </div>
             )}
@@ -302,7 +314,7 @@ const Resources = () => {
                 data-testid="call-resource-btn"
               >
                 <Phone className="w-4 h-4 mr-2" />
-                Call Now
+                {t('resources.callNow')}
               </Button>
             </a>
           )}
@@ -316,9 +328,9 @@ const Resources = () => {
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h1 className="text-3xl font-bold text-[#0F172A] mb-2">Find Resources</h1>
+          <h1 className="text-3xl font-bold text-[#0F172A] mb-2">{t('resources.title')}</h1>
           <p className="text-slate-600">
-            Search and filter to find the services you need in Minnesota
+            {t('resources.subtitle')}
           </p>
         </div>
       </div>
@@ -332,7 +344,7 @@ const Resources = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
               <Input
                 type="text"
-                placeholder="Search resources, services, or locations..."
+                placeholder={t('resources.searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 h-11 border-slate-200 focus:ring-2 focus:ring-[#0284C7] search-input"
@@ -358,7 +370,7 @@ const Resources = () => {
                 data-testid="view-list-btn"
               >
                 <List className="w-4 h-4 mr-1" />
-                List
+                {t('resources.list')}
               </Button>
               <Button
                 variant={viewMode === "map" ? "default" : "outline"}
@@ -368,7 +380,7 @@ const Resources = () => {
                 data-testid="view-map-btn"
               >
                 <MapIcon className="w-4 h-4 mr-1" />
-                Map
+                {t('resources.map')}
               </Button>
             </div>
           </div>
@@ -383,7 +395,7 @@ const Resources = () => {
               data-testid="filter-all"
             >
               <Filter className="w-4 h-4 mr-1" />
-              All
+              {t('resources.all')}
             </Button>
             {categories.map((category) => {
               const IconComponent = iconMap[category.icon] || HomeIcon;
@@ -398,7 +410,7 @@ const Resources = () => {
                   data-testid={`filter-${category.id}`}
                 >
                   <IconComponent className="w-4 h-4 mr-1" />
-                  {category.name}
+                  {getCategoryName(category.id)}
                 </Button>
               );
             })}
@@ -414,8 +426,8 @@ const Resources = () => {
             <Skeleton className="h-5 w-40" />
           ) : (
             <span data-testid="results-count">
-              {filteredResources.length} resource{filteredResources.length !== 1 ? "s" : ""} found
-              {selectedCategory && ` in ${getCategoryInfo(selectedCategory).name}`}
+              {filteredResources.length} {filteredResources.length !== 1 ? t('resources.found') : t('resources.foundSingular')}
+              {selectedCategory && ` ${t('resources.in')} ${getCategoryName(selectedCategory)}`}
             </span>
           )}
         </div>
@@ -455,8 +467,8 @@ const Resources = () => {
                 <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Search className="w-8 h-8 text-slate-400" />
                 </div>
-                <h3 className="text-lg font-semibold text-[#0F172A] mb-2">No resources found</h3>
-                <p className="text-slate-600">Try adjusting your search or filter criteria</p>
+                <h3 className="text-lg font-semibold text-[#0F172A] mb-2">{t('resources.noResults')}</h3>
+                <p className="text-slate-600">{t('resources.noResultsDesc')}</p>
               </div>
             )}
           </div>
