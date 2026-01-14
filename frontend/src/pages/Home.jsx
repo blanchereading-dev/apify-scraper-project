@@ -65,77 +65,91 @@ const Home = () => {
 
   return (
     <div className="min-h-screen" data-testid="home-page">
-      {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ 
-            backgroundImage: "url('https://images.unsplash.com/photo-1726587678973-dc942016dc37?crop=entropy&cs=srgb&fm=jpg&q=85')"
-          }}
-        />
-        <div className="absolute inset-0 hero-overlay" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 animate-fade-in">
-              Supporting Minnesota's Reentry Community
-            </span>
+      {/* Hero Section - Compact Government Style */}
+      <section className="bg-[#1B3B5A] py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            <div className="lg:max-w-2xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-[#0284C7] rounded-lg flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-white/70 text-sm font-medium uppercase tracking-wider">State of Minnesota</p>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-white">ReEntry Connect MN</h1>
+                </div>
+              </div>
+              
+              <p className="text-white/90 text-lg mb-6 leading-relaxed">
+                Official resource directory connecting individuals returning from incarceration 
+                with housing, employment, legal aid, healthcare, and essential services across Minnesota.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/resources">
+                  <Button 
+                    data-testid="hero-find-resources-btn"
+                    className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-medium px-6 transition-all duration-200 w-full sm:w-auto"
+                  >
+                    Find Resources
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
+                <Link to="/about">
+                  <Button 
+                    data-testid="hero-learn-more-btn"
+                    variant="outline"
+                    className="border-white/30 text-white hover:bg-white/10 font-medium px-6 w-full sm:w-auto"
+                  >
+                    About This Program
+                  </Button>
+                </Link>
+              </div>
+            </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
-              Your Path to a 
-              <span className="text-[#7dd3fc]"> Fresh Start</span>
-            </h1>
-            
-            <p className="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed max-w-2xl animate-slide-up stagger-1">
-              ReEntry Connect MN helps individuals returning from incarceration find 
-              housing, employment, legal aid, and other essential services across Minnesota.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 animate-slide-up stagger-2">
-              <Link to="/resources">
-                <Button 
-                  data-testid="hero-find-resources-btn"
-                  size="lg"
-                  className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-semibold px-8 py-6 text-lg transition-all duration-200 hover:translate-y-[-2px] hover:shadow-xl w-full sm:w-auto"
-                >
-                  Find Resources
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button 
-                  data-testid="hero-learn-more-btn"
-                  variant="outline"
-                  size="lg"
-                  className="bg-white/10 border-white/30 text-white hover:bg-white/20 font-semibold px-8 py-6 text-lg backdrop-blur-sm w-full sm:w-auto"
-                >
-                  Learn More
-                </Button>
-              </Link>
+            <div className="hidden lg:block">
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                  <div className="text-3xl font-bold text-white">{resourceCount}+</div>
+                  <div className="text-white/70 text-sm">Resources</div>
+                </div>
+                <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                  <div className="text-3xl font-bold text-white">7</div>
+                  <div className="text-white/70 text-sm">Categories</div>
+                </div>
+                <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                  <div className="text-3xl font-bold text-white">24/7</div>
+                  <div className="text-white/70 text-sm">AI Assistant</div>
+                </div>
+                <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                  <div className="text-3xl font-bold text-white">Free</div>
+                  <div className="text-white/70 text-sm">Always</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="bg-[#1B3B5A] py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center" data-testid="stat-resources">
-              <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{resourceCount}+</div>
-              <div className="text-white/70 text-sm sm:text-base">Resources Listed</div>
+      {/* Mobile Stats - Only visible on mobile */}
+      <section className="bg-[#0F172A] py-6 lg:hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-4 gap-4 text-center">
+            <div data-testid="stat-resources">
+              <div className="text-xl font-bold text-white">{resourceCount}+</div>
+              <div className="text-white/60 text-xs">Resources</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-white mb-1">7</div>
-              <div className="text-white/70 text-sm sm:text-base">Categories</div>
+            <div>
+              <div className="text-xl font-bold text-white">7</div>
+              <div className="text-white/60 text-xs">Categories</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-white mb-1">24/7</div>
-              <div className="text-white/70 text-sm sm:text-base">AI Assistant</div>
+            <div>
+              <div className="text-xl font-bold text-white">24/7</div>
+              <div className="text-white/60 text-xs">Assistant</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-white mb-1">Free</div>
-              <div className="text-white/70 text-sm sm:text-base">Always</div>
+            <div>
+              <div className="text-xl font-bold text-white">Free</div>
+              <div className="text-white/60 text-xs">Always</div>
             </div>
           </div>
         </div>
