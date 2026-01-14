@@ -157,8 +157,7 @@ async def get_categories():
         {"id": "employment", "name": "Employment Services", "icon": "Briefcase"},
         {"id": "healthcare", "name": "Healthcare & Mental Health", "icon": "Heart"},
         {"id": "education", "name": "Education & Training", "icon": "GraduationCap"},
-        {"id": "food", "name": "Food Assistance", "icon": "Utensils"},
-        {"id": "transportation", "name": "Transportation", "icon": "Car"}
+        {"id": "food", "name": "Food Assistance", "icon": "Utensils"}
     ]
     return categories
 
