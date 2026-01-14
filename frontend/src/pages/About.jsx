@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { 
   MapPin, 
   Heart, 
@@ -11,31 +12,33 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
+  const { t } = useTranslation();
+
   const values = [
     {
       icon: Heart,
-      title: "Compassion",
-      description: "We believe everyone deserves a second chance and approach our work with empathy and understanding."
+      title: t('about.compassion'),
+      description: t('about.compassionDesc')
     },
     {
       icon: Shield,
-      title: "Dignity",
-      description: "We respect the dignity of all individuals and are committed to providing non-judgmental support."
+      title: t('about.dignity'),
+      description: t('about.dignityDesc')
     },
     {
       icon: Users,
-      title: "Community",
-      description: "We work alongside community partners to create a network of support for those returning home."
+      title: t('about.community'),
+      description: t('about.communityDesc')
     }
   ];
 
   const features = [
-    "Comprehensive resource directory for Minnesota",
-    "Easy search and filter functionality",
-    "Interactive map to find nearby services",
-    "AI-powered assistant for personalized guidance",
-    "Regularly updated resource information",
-    "Mobile-friendly design for access anywhere"
+    t('about.feature1'),
+    t('about.feature2'),
+    t('about.feature3'),
+    t('about.feature4'),
+    t('about.feature5'),
+    t('about.feature6')
   ];
 
   return (
@@ -45,12 +48,10 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              About ReEntry Connect MN
+              {t('about.title')}
             </h1>
             <p className="text-xl text-white/90 leading-relaxed">
-              We're dedicated to helping individuals returning from incarceration 
-              find the resources they need to successfully reintegrate into their 
-              communities across Minnesota.
+              {t('about.subtitle')}
             </p>
           </div>
         </div>
@@ -62,25 +63,19 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-[#0284C7] font-semibold text-sm uppercase tracking-wider">
-                Our Mission
+                {t('about.missionTitle')}
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mt-2 mb-6">
-                Connecting People to Opportunities
+                {t('about.missionSubtitle')}
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                ReEntry Connect MN was created to address a critical need: helping 
-                individuals returning from incarceration navigate the complex landscape 
-                of available resources in Minnesota.
+                {t('about.missionP1')}
               </p>
               <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                We understand that the transition from incarceration to community life 
-                can be overwhelming. Finding housing, employment, healthcare, and other 
-                essential services shouldn't add to that stress.
+                {t('about.missionP2')}
               </p>
               <p className="text-slate-600 text-lg leading-relaxed">
-                That's why we've built a comprehensive, easy-to-use platform that puts 
-                all the information you need in one place, along with an AI assistant 
-                available 24/7 to help guide you through your journey.
+                {t('about.missionP3')}
               </p>
             </div>
             <div className="relative">
@@ -100,10 +95,10 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <span className="text-[#0284C7] font-semibold text-sm uppercase tracking-wider">
-              Our Values
+              {t('about.valuesTitle')}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mt-2">
-              What Guides Us
+              {t('about.valuesSubtitle')}
             </h2>
           </div>
 
@@ -140,15 +135,13 @@ const About = () => {
             </div>
             <div className="order-1 lg:order-2">
               <span className="text-[#0284C7] font-semibold text-sm uppercase tracking-wider">
-                Platform Features
+                {t('about.featuresTitle')}
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mt-2 mb-6">
-                Built for Your Needs
+                {t('about.featuresSubtitle')}
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-8">
-                ReEntry Connect MN is designed with you in mind. We've created 
-                features that make finding and connecting with resources as 
-                simple as possible.
+                {t('about.featuresDesc')}
               </p>
               <ul className="space-y-4">
                 {features.map((feature, index) => (
@@ -172,11 +165,10 @@ const About = () => {
             </div>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Start Your Search Today
+            {t('about.ctaTitle')}
           </h2>
           <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Whether you're looking for housing, employment, legal aid, or other 
-            services, we're here to help you find what you need.
+            {t('about.ctaDesc')}
           </p>
           <Link to="/resources">
             <Button 
@@ -184,7 +176,7 @@ const About = () => {
               size="lg"
               className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-semibold px-10 py-6 text-lg transition-all duration-200 hover:translate-y-[-2px] hover:shadow-xl"
             >
-              Browse Resources
+              {t('about.browseResources')}
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
@@ -206,13 +198,13 @@ const About = () => {
             </div>
             
             <div className="flex items-center gap-6 text-slate-400 text-sm">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <Link to="/resources" className="hover:text-white transition-colors">Resources</Link>
-              <Link to="/about" className="hover:text-white transition-colors">About</Link>
+              <Link to="/" className="hover:text-white transition-colors">{t('nav.home')}</Link>
+              <Link to="/resources" className="hover:text-white transition-colors">{t('nav.findResources')}</Link>
+              <Link to="/about" className="hover:text-white transition-colors">{t('nav.about')}</Link>
             </div>
             
             <p className="text-slate-500 text-sm">
-              © {new Date().getFullYear()} ReEntry Connect MN
+              {t('footer.copyright')}
             </p>
           </div>
         </div>

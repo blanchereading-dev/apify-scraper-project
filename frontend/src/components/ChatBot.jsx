@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2, Bot, User, Minimize2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { MessageCircle, X, Send, Loader2, Bot, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -10,13 +11,9 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const ChatBot = () => {
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content: "Hello! I'm here to help you find resources for your reentry journey in Minnesota. What kind of assistance are you looking for today? You can ask about housing, employment, legal aid, healthcare, education, food assistance, or transportation."
-    }
-  ]);
+  const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId] = useState(() => {
@@ -26,6 +23,14 @@ const ChatBot = () => {
   
   const scrollAreaRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Initialize with greeting based on language
+  useEffect(() => {
+    setMessages([{
+      role: "assistant",
+      content: t('chat.greeting')
+    }]);
+  }, [i18n.language, t]);
 
   useEffect(() => {
     localStorage.setItem("reentry-chat-session", sessionId);
@@ -58,7 +63,8 @@ const ChatBot = () => {
       const response = await axios.post(`${API}/chat`, {
         message: userMessage.content,
         session_id: sessionId,
-        history: messages.slice(-10)
+        history: messages.slice(-10),
+        language: i18n.language
       });
 
       setMessages(prev => [...prev, {
@@ -69,7 +75,7 @@ const ChatBot = () => {
       console.error("Chat error:", error);
       setMessages(prev => [...prev, {
         role: "assistant",
-        content: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or browse our resource directory directly for assistance."
+        content: t('chat.error')
       }]);
     } finally {
       setIsLoading(false);
@@ -110,8 +116,8 @@ const ChatBot = () => {
                 <Bot className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h3 className="font-semibold text-white">ReEntry Assistant</h3>
-                <p className="text-white/70 text-xs">Here to help 24/7</p>
+                <h3 className="font-semibold text-white">{t('chat.title')}</h3>
+                <p className="text-white/70 text-xs">{t('chat.subtitle')}</p>
               </div>
             </div>
             <button
@@ -162,7 +168,7 @@ const ChatBot = () => {
                   <div className="bg-slate-100 px-4 py-3 rounded-2xl rounded-bl-sm">
                     <div className="flex items-center gap-2">
                       <Loader2 className="w-4 h-4 animate-spin text-slate-500" />
-                      <span className="text-sm text-slate-500">Thinking...</span>
+                      <span className="text-sm text-slate-500">{t('chat.thinking')}</span>
                     </div>
                   </div>
                 </div>
@@ -178,7 +184,7 @@ const ChatBot = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
+                placeholder={t('chat.placeholder')}
                 className="flex-1 border-slate-200 focus:ring-2 focus:ring-[#0284C7]"
                 disabled={isLoading}
                 data-testid="chat-input"
@@ -193,7 +199,7 @@ const ChatBot = () => {
               </Button>
             </div>
             <p className="text-xs text-slate-400 mt-2 text-center">
-              AI assistant may make mistakes. Verify important information.
+              {t('chat.disclaimer')}
             </p>
           </div>
         </div>
