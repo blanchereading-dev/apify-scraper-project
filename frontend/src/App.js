@@ -1,4 +1,5 @@
 import "@/App.css";
+import "@/i18n";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import Navbar from "@/components/Navbar";

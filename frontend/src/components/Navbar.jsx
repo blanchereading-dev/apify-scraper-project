@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Menu, X, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/resources", label: "Find Resources" },
-    { path: "/about", label: "About" },
+    { path: "/", label: t('nav.home') },
+    { path: "/resources", label: t('nav.findResources') },
+    { path: "/about", label: t('nav.about') },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -42,7 +45,7 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                data-testid={`nav-${link.label.toLowerCase().replace(' ', '-')}`}
+                data-testid={`nav-${link.path === '/' ? 'home' : link.path.slice(1)}`}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                   isActive(link.path)
                     ? "text-[#0284C7] bg-blue-50"
@@ -54,27 +57,31 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Right side */}
+          <div className="hidden md:flex items-center gap-2">
+            <LanguageSwitcher />
             <Link to="/resources">
               <Button 
                 data-testid="get-help-btn"
                 className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-medium px-5 transition-all duration-200 hover:translate-y-[-1px] hover:shadow-md"
               >
-                Get Help Now
+                {t('nav.getHelpNow')}
               </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-md text-slate-600 hover:bg-slate-100"
-            onClick={() => setIsOpen(!isOpen)}
-            data-testid="mobile-menu-btn"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <LanguageSwitcher />
+            <button
+              className="p-2 rounded-md text-slate-600 hover:bg-slate-100"
+              onClick={() => setIsOpen(!isOpen)}
+              data-testid="mobile-menu-btn"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -97,7 +104,7 @@ const Navbar = () => {
               ))}
               <Link to="/resources" onClick={() => setIsOpen(false)}>
                 <Button className="w-full mt-2 bg-[#0284C7] hover:bg-[#0369a1] text-white font-medium">
-                  Get Help Now
+                  {t('nav.getHelpNow')}
                 </Button>
               </Link>
             </nav>
