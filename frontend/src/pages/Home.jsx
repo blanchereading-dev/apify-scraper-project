@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import EmergencyHotlines from "@/components/EmergencyHotlines";
 import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -248,6 +249,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Emergency Hotlines */}
+      <EmergencyHotlines />
 
       {/* CTA Section */}
       <section className="py-16 bg-[#1B3B5A]">
