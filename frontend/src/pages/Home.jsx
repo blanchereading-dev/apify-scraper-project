@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { 
   Home as HomeIcon, 
   Scale, 
   Briefcase, 
   Heart, 
   GraduationCap, 
-  Utensils, 
-  Car,
+  Utensils,
   ArrowRight,
   Phone,
   MapPin,
@@ -27,7 +27,6 @@ const iconMap = {
   Heart: Heart,
   GraduationCap: GraduationCap,
   Utensils: Utensils,
-  Car: Car,
 };
 
 const categoryColors = {
@@ -37,10 +36,10 @@ const categoryColors = {
   healthcare: "bg-pink-100 text-pink-700 hover:bg-pink-200",
   education: "bg-indigo-100 text-indigo-700 hover:bg-indigo-200",
   food: "bg-orange-100 text-orange-700 hover:bg-orange-200",
-  transportation: "bg-purple-100 text-purple-700 hover:bg-purple-200",
 };
 
 const Home = () => {
+  const { t } = useTranslation();
   const [categories, setCategories] = useState([]);
   const [resourceCount, setResourceCount] = useState(0);
 
@@ -54,7 +53,8 @@ const Home = () => {
           axios.get(`${API}/categories`),
           axios.get(`${API}/resources`)
         ]);
-        setCategories(catRes.data);
+        // Filter out transportation category
+        setCategories(catRes.data.filter(c => c.id !== 'transportation'));
         setResourceCount(resRes.data.length);
       } catch (e) {
         console.error("Error fetching data:", e);
@@ -62,6 +62,18 @@ const Home = () => {
     };
     fetchData();
   }, []);
+
+  const getCategoryName = (categoryId) => {
+    const names = {
+      housing: t('categories.housing'),
+      legal: t('categories.legal'),
+      employment: t('categories.employment'),
+      healthcare: t('categories.healthcare'),
+      education: t('categories.education'),
+      food: t('categories.food'),
+    };
+    return names[categoryId] || categoryId;
+  };
 
   return (
     <div className="min-h-screen" data-testid="home-page">
@@ -75,14 +87,17 @@ const Home = () => {
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-white/70 text-sm font-medium uppercase tracking-wider">State of Minnesota</p>
-                  <h1 className="text-2xl sm:text-3xl font-bold text-white">ReEntry Connect MN</h1>
+                  <p className="text-white/70 text-sm font-medium uppercase tracking-wider">
+                    {t('hero.stateOf')}
+                  </p>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-white">
+                    {t('hero.title')}
+                  </h1>
                 </div>
               </div>
               
               <p className="text-white/90 text-lg mb-6 leading-relaxed">
-                Official resource directory connecting individuals returning from incarceration 
-                with housing, employment, legal aid, healthcare, and essential services across Minnesota.
+                {t('hero.description')}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3">
@@ -91,7 +106,7 @@ const Home = () => {
                     data-testid="hero-find-resources-btn"
                     className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-medium px-6 transition-all duration-200 w-full sm:w-auto"
                   >
-                    Find Resources
+                    {t('hero.findResources')}
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>
@@ -101,7 +116,7 @@ const Home = () => {
                     variant="outline"
                     className="border-white/30 text-white hover:bg-white/10 font-medium px-6 w-full sm:w-auto"
                   >
-                    About This Program
+                    {t('hero.aboutProgram')}
                   </Button>
                 </Link>
               </div>
@@ -111,19 +126,19 @@ const Home = () => {
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                   <div className="text-3xl font-bold text-white">{resourceCount}+</div>
-                  <div className="text-white/70 text-sm">Resources</div>
+                  <div className="text-white/70 text-sm">{t('stats.resources')}</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                  <div className="text-3xl font-bold text-white">7</div>
-                  <div className="text-white/70 text-sm">Categories</div>
+                  <div className="text-3xl font-bold text-white">6</div>
+                  <div className="text-white/70 text-sm">{t('stats.categories')}</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                   <div className="text-3xl font-bold text-white">24/7</div>
-                  <div className="text-white/70 text-sm">AI Assistant</div>
+                  <div className="text-white/70 text-sm">{t('stats.aiAssistant')}</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                   <div className="text-3xl font-bold text-white">Free</div>
-                  <div className="text-white/70 text-sm">Always</div>
+                  <div className="text-white/70 text-sm">{t('stats.always')}</div>
                 </div>
               </div>
             </div>
@@ -137,19 +152,19 @@ const Home = () => {
           <div className="grid grid-cols-4 gap-4 text-center">
             <div data-testid="stat-resources">
               <div className="text-xl font-bold text-white">{resourceCount}+</div>
-              <div className="text-white/60 text-xs">Resources</div>
+              <div className="text-white/60 text-xs">{t('stats.resources')}</div>
             </div>
             <div>
-              <div className="text-xl font-bold text-white">7</div>
-              <div className="text-white/60 text-xs">Categories</div>
+              <div className="text-xl font-bold text-white">6</div>
+              <div className="text-white/60 text-xs">{t('stats.categories')}</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">24/7</div>
-              <div className="text-white/60 text-xs">Assistant</div>
+              <div className="text-white/60 text-xs">{t('stats.aiAssistant')}</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">Free</div>
-              <div className="text-white/60 text-xs">Always</div>
+              <div className="text-white/60 text-xs">{t('stats.always')}</div>
             </div>
           </div>
         </div>
@@ -160,14 +175,14 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
-              Find the Help You Need
+              {t('categories.title')}
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Browse resources by category to find services that match your needs
+              {t('categories.subtitle')}
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {categories.map((category, index) => {
               const IconComponent = iconMap[category.icon] || HomeIcon;
               return (
@@ -184,7 +199,7 @@ const Home = () => {
                         <IconComponent className="w-7 h-7" />
                       </div>
                       <h3 className="font-semibold text-[#0F172A] text-sm sm:text-base">
-                        {category.name}
+                        {getCategoryName(category.id)}
                       </h3>
                     </CardContent>
                   </Card>
@@ -201,7 +216,7 @@ const Home = () => {
                 size="lg"
                 className="border-[#1B3B5A] text-[#1B3B5A] hover:bg-[#1B3B5A] hover:text-white font-medium px-8"
               >
-                View All Resources
+                {t('categories.viewAll')}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -214,10 +229,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
-              How It Works
+              {t('howItWorks.title')}
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Getting help is simple. Here's how to find the resources you need.
+              {t('howItWorks.subtitle')}
             </p>
           </div>
 
@@ -226,9 +241,9 @@ const Home = () => {
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
                 <MapPin className="w-8 h-8 text-[#0284C7]" />
               </div>
-              <h3 className="font-bold text-xl text-[#0F172A] mb-3">1. Search</h3>
+              <h3 className="font-bold text-xl text-[#0F172A] mb-3">{t('howItWorks.step1Title')}</h3>
               <p className="text-slate-600">
-                Search by category, location, or keyword to find resources near you
+                {t('howItWorks.step1Desc')}
               </p>
             </div>
 
@@ -236,9 +251,9 @@ const Home = () => {
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
                 <Users className="w-8 h-8 text-[#0284C7]" />
               </div>
-              <h3 className="font-bold text-xl text-[#0F172A] mb-3">2. Connect</h3>
+              <h3 className="font-bold text-xl text-[#0F172A] mb-3">{t('howItWorks.step2Title')}</h3>
               <p className="text-slate-600">
-                View details, hours, and contact information for each resource
+                {t('howItWorks.step2Desc')}
               </p>
             </div>
 
@@ -246,9 +261,9 @@ const Home = () => {
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
                 <Phone className="w-8 h-8 text-[#0284C7]" />
               </div>
-              <h3 className="font-bold text-xl text-[#0F172A] mb-3">3. Get Help</h3>
+              <h3 className="font-bold text-xl text-[#0F172A] mb-3">{t('howItWorks.step3Title')}</h3>
               <p className="text-slate-600">
-                Reach out directly or use our AI assistant for guidance
+                {t('howItWorks.step3Desc')}
               </p>
             </div>
           </div>
@@ -259,11 +274,10 @@ const Home = () => {
       <section className="py-16 bg-[#1B3B5A]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Ready to Get Started?
+            {t('cta.title')}
           </h2>
           <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Our AI assistant is available 24/7 to help you find the right resources. 
-            Click the chat icon in the corner to start a conversation.
+            {t('cta.description')}
           </p>
           <Link to="/resources">
             <Button 
@@ -271,7 +285,7 @@ const Home = () => {
               size="lg"
               className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-semibold px-10 py-6 text-lg transition-all duration-200 hover:translate-y-[-2px] hover:shadow-xl"
             >
-              Browse Resources Now
+              {t('cta.browseNow')}
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
@@ -293,13 +307,13 @@ const Home = () => {
             </div>
             
             <div className="flex items-center gap-6 text-slate-400 text-sm">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <Link to="/resources" className="hover:text-white transition-colors">Resources</Link>
-              <Link to="/about" className="hover:text-white transition-colors">About</Link>
+              <Link to="/" className="hover:text-white transition-colors">{t('nav.home')}</Link>
+              <Link to="/resources" className="hover:text-white transition-colors">{t('nav.findResources')}</Link>
+              <Link to="/about" className="hover:text-white transition-colors">{t('nav.about')}</Link>
             </div>
             
             <p className="text-slate-500 text-sm">
-              © {new Date().getFullYear()} ReEntry Connect MN
+              {t('footer.copyright')}
             </p>
           </div>
         </div>
