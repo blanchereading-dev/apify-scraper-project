@@ -89,7 +89,7 @@ const ChatBot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 w-14 h-14 bg-[#0284C7] hover:bg-[#0369a1] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-50"
+          className="fixed bottom-24 right-6 w-14 h-14 bg-[#0284C7] hover:bg-[#0369a1] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-[9999]"
           data-testid="chat-toggle-btn"
           aria-label="Open chat"
         >
@@ -100,7 +100,7 @@ const ChatBot = () => {
       {/* Chat Window */}
       {isOpen && (
         <div 
-          className="fixed bottom-6 right-6 w-[380px] h-[550px] bg-white rounded-2xl shadow-2xl flex flex-col z-50 chatbot-container animate-slide-up overflow-hidden"
+          className="fixed bottom-24 right-6 w-[380px] h-[550px] bg-white rounded-2xl shadow-2xl flex flex-col z-[9999] chatbot-container animate-slide-up overflow-hidden"
           data-testid="chat-window"
         >
           {/* Header */}
