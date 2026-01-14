@@ -79,88 +79,49 @@ const Home = () => {
   return (
     <div className="min-h-screen" data-testid="home-page">
       {/* Hero Section - Clean Community Style */}
-      <section className="bg-[#1B3B5A] py-12 sm:py-16">
+      <section className="bg-[#1B3B5A] py-12 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-            <div className="lg:max-w-2xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0284C7] rounded-lg flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-white">
-                  ReEntry Connect MN
-                </h1>
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-[#0284C7] rounded-lg flex items-center justify-center">
+                <MapPin className="w-6 h-6 text-white" />
               </div>
-              
-              <p className="text-white/90 text-lg mb-6 leading-relaxed">
-                A community resource directory connecting individuals returning from incarceration 
-                with housing, employment, legal aid, healthcare, and essential services across Minnesota.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link to="/resources">
-                  <Button 
-                    data-testid="hero-find-resources-btn"
-                    className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-medium px-6 transition-all duration-200 w-full sm:w-auto"
-                  >
-                    {t('hero.findResources')}
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </Link>
-                <Link to="/about">
-                  <Button 
-                    data-testid="hero-learn-more-btn"
-                    variant="outline"
-                    className="border-white/30 text-white hover:bg-white/10 font-medium px-6 w-full sm:w-auto"
-                  >
-                    {t('hero.aboutProgram')}
-                  </Button>
-                </Link>
-              </div>
+              <h1 className="text-2xl sm:text-3xl font-bold text-white">
+                ReEntry Connect MN
+              </h1>
             </div>
             
-            <div className="hidden lg:block">
-              <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                  <div className="text-3xl font-bold text-white">{resourceCount}+</div>
-                  <div className="text-white/70 text-sm">{t('stats.resources')}</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                  <div className="text-3xl font-bold text-white">24/7</div>
-                  <div className="text-white/70 text-sm">{t('stats.aiAssistant')}</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm col-span-2">
-                  <div className="text-3xl font-bold text-white">Free</div>
-                  <div className="text-white/70 text-sm">{t('stats.always')}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mobile Stats - Only visible on mobile */}
-      <section className="bg-[#0F172A] py-6 lg:hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-3 gap-4 text-center">
-            <div data-testid="stat-resources">
-              <div className="text-xl font-bold text-white">{resourceCount}+</div>
-              <div className="text-white/60 text-xs">{t('stats.resources')}</div>
-            </div>
-            <div>
-              <div className="text-xl font-bold text-white">24/7</div>
-              <div className="text-white/60 text-xs">{t('stats.aiAssistant')}</div>
-            </div>
-            <div>
-              <div className="text-xl font-bold text-white">Free</div>
-              <div className="text-white/60 text-xs">{t('stats.always')}</div>
+            <p className="text-white/90 text-lg mb-6 leading-relaxed">
+              A community resource directory connecting individuals returning from incarceration 
+              with housing, employment, legal aid, healthcare, and essential services across Minnesota.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link to="/resources">
+                <Button 
+                  data-testid="hero-find-resources-btn"
+                  className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-medium px-6 transition-all duration-200 w-full sm:w-auto"
+                >
+                  {t('hero.findResources')}
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+              <Link to="/about">
+                <Button 
+                  data-testid="hero-learn-more-btn"
+                  variant="outline"
+                  className="border-white/30 text-white hover:bg-white/10 font-medium px-6 w-full sm:w-auto"
+                >
+                  {t('hero.aboutProgram')}
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Categories Section */}
-      <section className="py-20 bg-[#F3F4F6] noise-bg">
+      <section className="py-16 bg-[#F3F4F6] noise-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
