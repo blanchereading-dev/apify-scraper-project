@@ -61,7 +61,7 @@ const categoryColors = {
 
 // Minnesota counties with major cities mapped
 const mnCounties = [
-  { name: "All Counties", value: "" },
+  { name: "All Counties", value: "all" },
   { name: "Hennepin (Minneapolis)", value: "Hennepin" },
   { name: "Ramsey (St. Paul)", value: "Ramsey" },
   { name: "Dakota", value: "Dakota" },
@@ -101,7 +101,7 @@ const Resources = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category") || "");
-  const [selectedCounty, setSelectedCounty] = useState(searchParams.get("county") || "");
+  const [selectedCounty, setSelectedCounty] = useState(searchParams.get("county") || "all");
   const [viewMode, setViewMode] = useState("list");
   const [selectedResource, setSelectedResource] = useState(null);
 
@@ -153,7 +153,7 @@ const Resources = () => {
       
       // County filter - check city to county mapping
       let matchesCounty = true;
-      if (selectedCounty) {
+      if (selectedCounty && selectedCounty !== "all") {
         const resourceCounty = cityToCounty[resource.city] || "";
         matchesCounty = resourceCounty === selectedCounty;
       }
@@ -165,12 +165,12 @@ const Resources = () => {
   const handleCategoryClick = (categoryId) => {
     const newCategory = selectedCategory === categoryId ? "" : categoryId;
     setSelectedCategory(newCategory);
-    updateSearchParams({ category: newCategory, county: selectedCounty });
+    updateSearchParams({ category: newCategory, county: selectedCounty === "all" ? "" : selectedCounty });
   };
 
   const handleCountyChange = (county) => {
     setSelectedCounty(county);
-    updateSearchParams({ category: selectedCategory, county });
+    updateSearchParams({ category: selectedCategory, county: county === "all" ? "" : county });
   };
 
   const updateSearchParams = ({ category, county }) => {
@@ -546,7 +546,7 @@ const Resources = () => {
             <span data-testid="results-count">
               {filteredResources.length} {filteredResources.length !== 1 ? t('resources.found') : t('resources.foundSingular')}
               {selectedCategory && ` ${t('resources.in')} ${getCategoryName(selectedCategory)}`}
-              {selectedCounty && ` • ${selectedCounty} County`}
+              {selectedCounty && selectedCounty !== "all" && ` • ${selectedCounty} County`}
             </span>
           )}
         </div>
