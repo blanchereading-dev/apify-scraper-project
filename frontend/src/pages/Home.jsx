@@ -77,7 +77,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen" data-testid="home-page">
-      {/* Hero Section - Compact Government Style */}
+      {/* Hero Section - Clean Community Style */}
       <section className="bg-[#1B3B5A] py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
@@ -86,18 +86,14 @@ const Home = () => {
                 <div className="w-12 h-12 bg-[#0284C7] rounded-lg flex items-center justify-center">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
-                <div>
-                  <p className="text-white/70 text-sm font-medium uppercase tracking-wider">
-                    {t('hero.stateOf')}
-                  </p>
-                  <h1 className="text-2xl sm:text-3xl font-bold text-white">
-                    {t('hero.title')}
-                  </h1>
-                </div>
+                <h1 className="text-2xl sm:text-3xl font-bold text-white">
+                  ReEntry Connect MN
+                </h1>
               </div>
               
               <p className="text-white/90 text-lg mb-6 leading-relaxed">
-                {t('hero.description')}
+                A community resource directory connecting individuals returning from incarceration 
+                with housing, employment, legal aid, healthcare, and essential services across Minnesota.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3">
@@ -129,14 +125,10 @@ const Home = () => {
                   <div className="text-white/70 text-sm">{t('stats.resources')}</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                  <div className="text-3xl font-bold text-white">6</div>
-                  <div className="text-white/70 text-sm">{t('stats.categories')}</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
                   <div className="text-3xl font-bold text-white">24/7</div>
                   <div className="text-white/70 text-sm">{t('stats.aiAssistant')}</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm col-span-2">
                   <div className="text-3xl font-bold text-white">Free</div>
                   <div className="text-white/70 text-sm">{t('stats.always')}</div>
                 </div>
@@ -149,14 +141,10 @@ const Home = () => {
       {/* Mobile Stats - Only visible on mobile */}
       <section className="bg-[#0F172A] py-6 lg:hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-4 gap-4 text-center">
+          <div className="grid grid-cols-3 gap-4 text-center">
             <div data-testid="stat-resources">
               <div className="text-xl font-bold text-white">{resourceCount}+</div>
               <div className="text-white/60 text-xs">{t('stats.resources')}</div>
-            </div>
-            <div>
-              <div className="text-xl font-bold text-white">6</div>
-              <div className="text-white/60 text-xs">{t('stats.categories')}</div>
             </div>
             <div>
               <div className="text-xl font-bold text-white">24/7</div>
@@ -224,47 +212,38 @@ const Home = () => {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="py-20 bg-white">
+      {/* How It Works Section - Condensed */}
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-2">
               {t('howItWorks.title')}
             </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              {t('howItWorks.subtitle')}
-            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <div className="text-center" data-testid="step-1">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <MapPin className="w-8 h-8 text-[#0284C7]" />
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <MapPin className="w-6 h-6 text-[#0284C7]" />
               </div>
-              <h3 className="font-bold text-xl text-[#0F172A] mb-3">{t('howItWorks.step1Title')}</h3>
-              <p className="text-slate-600">
-                {t('howItWorks.step1Desc')}
-              </p>
+              <h3 className="font-semibold text-lg text-[#0F172A] mb-1">{t('howItWorks.step1Title')}</h3>
+              <p className="text-slate-600 text-sm">{t('howItWorks.step1Desc')}</p>
             </div>
 
             <div className="text-center" data-testid="step-2">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <Users className="w-8 h-8 text-[#0284C7]" />
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <Users className="w-6 h-6 text-[#0284C7]" />
               </div>
-              <h3 className="font-bold text-xl text-[#0F172A] mb-3">{t('howItWorks.step2Title')}</h3>
-              <p className="text-slate-600">
-                {t('howItWorks.step2Desc')}
-              </p>
+              <h3 className="font-semibold text-lg text-[#0F172A] mb-1">{t('howItWorks.step2Title')}</h3>
+              <p className="text-slate-600 text-sm">{t('howItWorks.step2Desc')}</p>
             </div>
 
             <div className="text-center" data-testid="step-3">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <Phone className="w-8 h-8 text-[#0284C7]" />
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <Phone className="w-6 h-6 text-[#0284C7]" />
               </div>
-              <h3 className="font-bold text-xl text-[#0F172A] mb-3">{t('howItWorks.step3Title')}</h3>
-              <p className="text-slate-600">
-                {t('howItWorks.step3Desc')}
-              </p>
+              <h3 className="font-semibold text-lg text-[#0F172A] mb-1">{t('howItWorks.step3Title')}</h3>
+              <p className="text-slate-600 text-sm">{t('howItWorks.step3Desc')}</p>
             </div>
           </div>
         </div>
