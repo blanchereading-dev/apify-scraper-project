@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useFavorites } from "@/context/FavoritesContext";
 import { 
   Search, 
   Home as HomeIcon, 
@@ -16,7 +17,8 @@ import {
   Filter,
   List,
   Map as MapIcon,
-  X
+  X,
+  Building2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -25,8 +27,16 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import axios from "axios";
 import ResourceMap from "@/components/ResourceMap";
+import { toast } from "sonner";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -49,14 +59,49 @@ const categoryColors = {
   food: { bg: "bg-orange-100", text: "text-orange-700", border: "border-orange-200" },
 };
 
+// Minnesota counties with major cities mapped
+const mnCounties = [
+  { name: "All Counties", value: "" },
+  { name: "Hennepin (Minneapolis)", value: "Hennepin" },
+  { name: "Ramsey (St. Paul)", value: "Ramsey" },
+  { name: "Dakota", value: "Dakota" },
+  { name: "Anoka", value: "Anoka" },
+  { name: "Washington", value: "Washington" },
+  { name: "Scott", value: "Scott" },
+  { name: "Carver", value: "Carver" },
+  { name: "Olmsted (Rochester)", value: "Olmsted" },
+  { name: "Stearns (St. Cloud)", value: "Stearns" },
+  { name: "St. Louis (Duluth)", value: "St. Louis" },
+  { name: "Wright", value: "Wright" },
+  { name: "Sherburne", value: "Sherburne" },
+  { name: "Blue Earth (Mankato)", value: "Blue Earth" },
+  { name: "Chisago", value: "Chisago" },
+];
+
+// City to county mapping for filtering
+const cityToCounty = {
+  "Minneapolis": "Hennepin",
+  "St. Paul": "Ramsey",
+  "Rochester": "Olmsted",
+  "St. Cloud": "Stearns",
+  "Duluth": "St. Louis",
+  "Brooklyn Park": "Hennepin",
+  "Edina": "Hennepin",
+  "Golden Valley": "Hennepin",
+  "Roseville": "Ramsey",
+  "Center City": "Chisago",
+};
+
 const Resources = () => {
   const { t } = useTranslation();
+  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
   const [searchParams, setSearchParams] = useSearchParams();
   const [resources, setResources] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category") || "");
+  const [selectedCounty, setSelectedCounty] = useState(searchParams.get("county") || "");
   const [viewMode, setViewMode] = useState("list");
   const [selectedResource, setSelectedResource] = useState(null);
 
@@ -80,7 +125,6 @@ const Resources = () => {
           axios.get(`${API}/resources`),
           axios.get(`${API}/categories`)
         ]);
-        // Filter out transportation resources and category
         setResources(resRes.data.filter(r => r.category !== 'transportation'));
         setCategories(catRes.data.filter(c => c.id !== 'transportation'));
       } catch (e) {
@@ -94,9 +138,9 @@ const Resources = () => {
 
   useEffect(() => {
     const category = searchParams.get("category");
-    if (category) {
-      setSelectedCategory(category);
-    }
+    const county = searchParams.get("county");
+    if (category) setSelectedCategory(category);
+    if (county) setSelectedCounty(county);
   }, [searchParams]);
 
   const filteredResources = useMemo(() => {
@@ -106,17 +150,44 @@ const Resources = () => {
         resource.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         resource.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         resource.services.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesCategory && matchesSearch;
+      
+      // County filter - check city to county mapping
+      let matchesCounty = true;
+      if (selectedCounty) {
+        const resourceCounty = cityToCounty[resource.city] || "";
+        matchesCounty = resourceCounty === selectedCounty;
+      }
+      
+      return matchesCategory && matchesSearch && matchesCounty;
     });
-  }, [resources, selectedCategory, searchQuery]);
+  }, [resources, selectedCategory, searchQuery, selectedCounty]);
 
   const handleCategoryClick = (categoryId) => {
-    if (selectedCategory === categoryId) {
-      setSelectedCategory("");
-      setSearchParams({});
+    const newCategory = selectedCategory === categoryId ? "" : categoryId;
+    setSelectedCategory(newCategory);
+    updateSearchParams({ category: newCategory, county: selectedCounty });
+  };
+
+  const handleCountyChange = (county) => {
+    setSelectedCounty(county);
+    updateSearchParams({ category: selectedCategory, county });
+  };
+
+  const updateSearchParams = ({ category, county }) => {
+    const params = {};
+    if (category) params.category = category;
+    if (county) params.county = county;
+    setSearchParams(params);
+  };
+
+  const handleFavoriteToggle = (resource, e) => {
+    e.stopPropagation();
+    if (isFavorite(resource.id)) {
+      removeFavorite(resource.id);
+      toast.info("Removed from saved resources");
     } else {
-      setSelectedCategory(categoryId);
-      setSearchParams({ category: categoryId });
+      addFavorite(resource);
+      toast.success("Saved to your list!");
     }
   };
 
@@ -129,14 +200,27 @@ const Resources = () => {
     const categoryInfo = getCategoryInfo(resource.category);
     const IconComponent = iconMap[categoryInfo.icon] || HomeIcon;
     const colors = categoryColors[resource.category] || categoryColors.housing;
+    const favorited = isFavorite(resource.id);
 
     return (
       <Card 
-        className="resource-card border border-slate-200 hover:border-[#0284C7] cursor-pointer"
+        className="resource-card border border-slate-200 hover:border-[#0284C7] cursor-pointer relative"
         onClick={() => setSelectedResource(resource)}
         data-testid={`resource-card-${resource.id}`}
       >
-        <CardHeader className="pb-3">
+        <button
+          onClick={(e) => handleFavoriteToggle(resource, e)}
+          className={`absolute top-3 right-3 p-2 rounded-full transition-colors z-10 ${
+            favorited 
+              ? "bg-red-50 text-red-500" 
+              : "bg-slate-100 text-slate-400 hover:text-red-500 hover:bg-red-50"
+          }`}
+          data-testid={`favorite-btn-${resource.id}`}
+        >
+          <Heart className={`w-4 h-4 ${favorited ? "fill-current" : ""}`} />
+        </button>
+
+        <CardHeader className="pb-3 pr-12">
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1">
               <CardTitle className="text-lg font-semibold text-[#0F172A] mb-2 line-clamp-1">
@@ -193,6 +277,7 @@ const Resources = () => {
     const categoryInfo = getCategoryInfo(resource.category);
     const IconComponent = iconMap[categoryInfo.icon] || HomeIcon;
     const colors = categoryColors[resource.category] || categoryColors.housing;
+    const favorited = isFavorite(resource.id);
 
     return (
       <div className="h-full flex flex-col">
@@ -207,6 +292,16 @@ const Resources = () => {
                 {resource.name}
               </SheetTitle>
             </div>
+            <button
+              onClick={(e) => handleFavoriteToggle(resource, e)}
+              className={`p-2 rounded-full transition-colors ${
+                favorited 
+                  ? "bg-red-50 text-red-500" 
+                  : "bg-slate-100 text-slate-400 hover:text-red-500 hover:bg-red-50"
+              }`}
+            >
+              <Heart className={`w-5 h-5 ${favorited ? "fill-current" : ""}`} />
+            </button>
           </div>
         </SheetHeader>
 
@@ -306,7 +401,15 @@ const Resources = () => {
           </div>
         </ScrollArea>
 
-        <div className="pt-4 border-t mt-auto">
+        <div className="pt-4 border-t mt-auto space-y-2">
+          <Button
+            onClick={(e) => handleFavoriteToggle(resource, e)}
+            variant={favorited ? "outline" : "secondary"}
+            className={`w-full ${favorited ? "border-red-200 text-red-600" : ""}`}
+          >
+            <Heart className={`w-4 h-4 mr-2 ${favorited ? "fill-current" : ""}`} />
+            {favorited ? "Remove from Saved" : "Save Resource"}
+          </Button>
           {resource.phone && (
             <a href={`tel:${resource.phone}`}>
               <Button 
@@ -359,6 +462,21 @@ const Resources = () => {
                 </button>
               )}
             </div>
+
+            {/* County Filter */}
+            <Select value={selectedCounty} onValueChange={handleCountyChange}>
+              <SelectTrigger className="w-full lg:w-[200px] h-11" data-testid="county-filter">
+                <Building2 className="w-4 h-4 mr-2 text-slate-400" />
+                <SelectValue placeholder="All Counties" />
+              </SelectTrigger>
+              <SelectContent>
+                {mnCounties.map((county) => (
+                  <SelectItem key={county.value} value={county.value}>
+                    {county.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
 
             {/* View Toggle */}
             <div className="flex gap-2">
@@ -428,6 +546,7 @@ const Resources = () => {
             <span data-testid="results-count">
               {filteredResources.length} {filteredResources.length !== 1 ? t('resources.found') : t('resources.foundSingular')}
               {selectedCategory && ` ${t('resources.in')} ${getCategoryName(selectedCategory)}`}
+              {selectedCounty && ` • ${selectedCounty} County`}
             </span>
           )}
         </div>
