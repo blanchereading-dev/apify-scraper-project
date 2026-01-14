@@ -1,0 +1,127 @@
+{
+  "identity": {
+    "name": "E1: The Anti-AI Designer",
+    "mission": "Create a 'Compassionate Navigator' aesthetic that blends government authority with human warmth. Avoid the 'cold bureaucracy' look.",
+    "principles": [
+      "Fusion: Swiss Precision (Layouts) + Organic Warmth (Colors/Images)",
+      "Emotion: Trust, Dignity, Hope",
+      "Accessibility First: WCAG AA/AAA Compliance is non-negotiable",
+      "Content is King: Clear, jargon-free resource labels"
+    ]
+  },
+  "typography": {
+    "headings": {
+      "family": "Manrope, sans-serif",
+      "weights": ["600", "700", "800"],
+      "usage": "Use for all section headers, hero titles, and card titles. Tracking tight (-0.02em)."
+    },
+    "body": {
+      "family": "Inter, sans-serif",
+      "weights": ["400", "500"],
+      "usage": "Use for all paragraph text, inputs, and list items. Relaxed line-height (1.6)."
+    },
+    "mono": {
+      "family": "JetBrains Mono, monospace",
+      "usage": "Use sparingly for reference numbers or data tags."
+    }
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "name": "Nordic Deep",
+        "hex": "#1B3B5A",
+        "description": "A deep, trustworthy blue that anchors the design. Use for primary buttons, active states, and key headers."
+      },
+      "secondary": {
+        "name": "Limestone",
+        "hex": "#F3F4F6",
+        "description": "A warm, light grey. Use for section backgrounds to break up white space."
+      },
+      "accent": {
+        "name": "Sky Hope",
+        "hex": "#0284C7",
+        "description": "A vibrant but accessible blue for 'Call to Action' links and highlights."
+      },
+      "background": {
+        "default": "#FFFFFF",
+        "paper": "#FAFAFA"
+      },
+      "text": {
+        "primary": "#0F172A",
+        "secondary": "#475569",
+        "muted": "#94A3B8"
+      },
+      "status": {
+        "success": "#059669",
+        "warning": "#D97706",
+        "error": "#DC2626"
+      }
+    },
+    "gradients": "NONE. Use flat colors or subtle noise textures only."
+  },
+  "layout": {
+    "grid_system": "Bento Grid (Mode B: High Density)",
+    "spacing": "Generous. Use p-6 or p-8 for cards. Gap-6 for grids.",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "radius": "rounded-lg (8px) - Soft but professional. Avoid fully round 'pill' shapes for main containers."
+  },
+  "components": {
+    "buttons": {
+      "style": "Solid, flat colors. No gradients. Sharp corners or small radius (rounded-md).",
+      "hover": "translate-y-[-1px] shadow-md transition-all duration-200"
+    },
+    "cards": {
+      "style": "Flat white background, 1px border (border-slate-200), subtle shadow-sm.",
+      "hover": "border-blue-300 shadow-md transition-all duration-200"
+    },
+    "inputs": {
+      "style": "High contrast borders. Focus ring must be distinct (ring-2 ring-blue-500)."
+    },
+    "navigation": {
+      "style": "Sticky top, glassmorphism (backdrop-blur-md bg-white/90), clear hierarchy."
+    }
+  },
+  "visual_enhancers": {
+    "texture": "Subtle noise overlay on the 'Secondary' background sections to add tactility.",
+    "shadows": "Soft, diffuse shadows (shadow-lg) for floating elements like the Chatbot.",
+    "icons": "Lucide React icons. Stroke width 1.5px or 2px. Color: Slate-600."
+  },
+  "media": {
+    "image_urls": {
+      "hero_background": "https://images.unsplash.com/photo-1726587678973-dc942016dc37?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "community_hands": "https://images.unsplash.com/photo-1739757646223-aae94c6ca541?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "support_meeting": "https://images.unsplash.com/flagged/photo-1551135049-83f3419ef05c?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "minnesota_nature": "https://images.unsplash.com/photo-1627508599202-06768d0615e4?crop=entropy&cs=srgb&fm=jpg&q=85"
+    },
+    "usage_rules": "Images must have 'alt' text. Use object-cover. Apply a subtle overlay (bg-slate-900/10) if text is placed over them."
+  },
+  "accessibility": {
+    "checklist": [
+      "Ensure 4.5:1 contrast ratio for all text.",
+      "Focus states must be visible (ring-2).",
+      "Semantic HTML (header, main, footer, nav, article).",
+      "Aria-labels for icon-only buttons."
+    ]
+  },
+  "tech_stack_specifics": {
+    "maps": "Leaflet (react-leaflet). Custom marker styles (blue pins).",
+    "charts": "Recharts (if needed for stats).",
+    "chatbot": "Floating action button (bottom-right). Chat window uses 'Glassmorphism' style."
+  },
+  "instructions_to_main_agent": [
+    "1. SETUP: Install 'lucide-react' and 'react-leaflet' immediately.",
+    "2. THEME: Update 'index.css' with the 'Nordic Deep' color variables.",
+    "3. FONTS: Import Manrope and Inter from Google Fonts in 'index.css'.",
+    "4. LAYOUT: Build the 'Resource Directory' using the Bento Grid strategy.",
+    "5. CHATBOT: Implement as a floating widget, not a full page.",
+    "6. MAP: Ensure the map container has a defined height (h-[400px] or similar).",
+    "7. DATA-TESTID: Add data-testid attributes to all interactive elements (buttons, inputs, cards)."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Do not use generic centered layouts.",
+    "Create depth through layered design elements.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Every interaction needs micro-animations.",
+    "Use 'sonner' for toasts."
+  ]
+}
