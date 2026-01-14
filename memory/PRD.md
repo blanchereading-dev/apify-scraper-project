@@ -35,27 +35,30 @@ Build a website called ReEntry Connect MN to assist individuals being released f
 
 ### Backend (server.py)
 - [x] Resource CRUD endpoints (`/api/resources`)
-- [x] Category listing endpoint (`/api/categories`)
+- [x] Category listing endpoint (`/api/categories`) - 6 categories (removed transportation)
 - [x] AI Chat endpoint (`/api/chat`) using GPT-5.2
-- [x] Database seeding with 38 Minnesota reentry resources
+- [x] Database seeding with 40 Minnesota reentry resources (comprehensive, scoured)
 - [x] Search and filter by category/keyword
 
 ### Frontend
-- [x] Home page with hero, stats, and category cards
+- [x] Home page with compact government-style hero, stats, and category cards
 - [x] Resources page with list/map toggle view
 - [x] Search bar with real-time filtering
-- [x] Category filter buttons
+- [x] Category filter buttons (6 categories)
 - [x] Resource detail sheet/modal
 - [x] Interactive Leaflet map with custom markers
 - [x] Floating AI chatbot with conversation history
 - [x] About page with mission and values
 - [x] Responsive navigation
+- [x] **Spanish language support** (i18next)
+- [x] Language switcher in navbar
 
 ### Design System
 - Typography: Manrope (headings) + Inter (body)
 - Colors: Nordic Deep (#1B3B5A), Sky Hope (#0284C7), Limestone (#F3F4F6)
 - Glassmorphism chatbot
 - Accessibility: Focus states, semantic HTML
+- Bilingual: English/Spanish
 
 ## Prioritized Backlog
 
