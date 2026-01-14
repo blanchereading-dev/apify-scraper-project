@@ -6,7 +6,6 @@ import { FavoritesProvider } from "@/context/FavoritesContext";
 import Navbar from "@/components/Navbar";
 import Home from "@/pages/Home";
 import Resources from "@/pages/Resources";
-import About from "@/pages/About";
 import Favorites from "@/pages/Favorites";
 import ChatBot from "@/components/ChatBot";
 
@@ -21,7 +20,6 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/favorites" element={<Favorites />} />
-              <Route path="/about" element={<About />} />
             </Routes>
           </main>
           <ChatBot />

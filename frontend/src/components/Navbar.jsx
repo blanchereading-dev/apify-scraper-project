@@ -18,7 +18,6 @@ const Navbar = () => {
     { path: "/", label: t('nav.home') },
     { path: "/resources", label: t('nav.findResources') },
     { path: "/favorites", label: "Saved", icon: Heart, badge: count },
-    { path: "/about", label: t('nav.about') },
   ];
 
   const isActive = (path) => location.pathname === path;

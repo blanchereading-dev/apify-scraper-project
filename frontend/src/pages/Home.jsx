@@ -106,15 +106,6 @@ const Home = () => {
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
-              <Link to="/about">
-                <Button 
-                  data-testid="hero-learn-more-btn"
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 font-medium px-6 w-full sm:w-auto"
-                >
-                  {t('hero.aboutProgram')}
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -253,7 +244,6 @@ const Home = () => {
             <div className="flex items-center gap-6 text-slate-400 text-sm">
               <Link to="/" className="hover:text-white transition-colors">{t('nav.home')}</Link>
               <Link to="/resources" className="hover:text-white transition-colors">{t('nav.findResources')}</Link>
-              <Link to="/about" className="hover:text-white transition-colors">{t('nav.about')}</Link>
             </div>
             
             <p className="text-slate-500 text-sm">
