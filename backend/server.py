@@ -89,6 +89,18 @@ class ChatResponse(BaseModel):
     response: str
     session_id: str
 
+class ResourceSubmission(BaseModel):
+    name: str
+    category: str
+    description: str
+    address: Optional[str] = None
+    city: str
+    county: str
+    phone: Optional[str] = None
+    website: Optional[str] = None
+    services: Optional[str] = None
+    submitterEmail: Optional[str] = None
+
 # ============== RESOURCE ENDPOINTS ==============
 
 @api_router.get("/")
@@ -202,6 +214,37 @@ Important: Always be respectful of users' dignity. Avoid assumptions and provide
     except Exception as e:
         logger.error(f"Chat error: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Chat service error: {str(e)}")
+
+# ============== RESOURCE SUBMISSION ENDPOINT ==============
+
+@api_router.post("/submissions", status_code=201)
+async def submit_resource(submission: ResourceSubmission):
+    """Accept community resource submissions for review"""
+    doc = {
+        "id": str(uuid.uuid4()),
+        "name": submission.name,
+        "category": submission.category,
+        "description": submission.description,
+        "address": submission.address,
+        "city": submission.city,
+        "county": submission.county,
+        "phone": submission.phone,
+        "website": submission.website,
+        "services": submission.services,
+        "submitter_email": submission.submitterEmail,
+        "status": "pending",
+        "submitted_at": datetime.now(timezone.utc).isoformat()
+    }
+    
+    await db.submissions.insert_one(doc)
+    logger.info(f"New resource submission: {submission.name}")
+    return {"message": "Submission received", "id": doc["id"]}
+
+@api_router.get("/submissions")
+async def get_submissions():
+    """Get all pending submissions (for admin review)"""
+    submissions = await db.submissions.find({}, {"_id": 0}).to_list(100)
+    return submissions
 
 # ============== SEED DATA ENDPOINT ==============
 
