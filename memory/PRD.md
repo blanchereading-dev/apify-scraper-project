@@ -37,7 +37,7 @@ Build a website called ReEntry Connect MN to assist individuals being released f
 - [x] Resource CRUD endpoints (`/api/resources`)
 - [x] Category listing endpoint (`/api/categories`)
 - [x] AI Chat endpoint (`/api/chat`) using GPT-5.2
-- [x] Database seeding with 16 Minnesota reentry resources
+- [x] Database seeding with 38 Minnesota reentry resources
 - [x] Search and filter by category/keyword
 
 ### Frontend
