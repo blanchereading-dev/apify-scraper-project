@@ -17,7 +17,7 @@ const Navbar = () => {
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/resources", label: "Resources" },
-    { path: "/how-to", label: "How To" },
+    { path: "/how-to", label: "FAQs" },
     { path: "/favorites", label: "Saved", icon: Heart, badge: count },
   ];
 
