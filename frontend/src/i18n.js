@@ -123,7 +123,9 @@ const resources = {
       // Language
       language: {
         en: "English",
-        es: "Español"
+        es: "Español",
+        so: "Soomaali",
+        hmn: "Hmoob"
       },
       // Footer
       footer: {
@@ -252,7 +254,271 @@ const resources = {
       // Language
       language: {
         en: "English",
-        es: "Español"
+        es: "Español",
+        so: "Soomaali",
+        hmn: "Hmoob"
+      },
+      // Footer
+      footer: {
+        copyright: "© 2025 ReEntry Connect MN"
+      }
+    }
+  },
+  so: {
+    translation: {
+      // Navigation
+      nav: {
+        home: "Bogga Hore",
+        findResources: "Raadi Kheyraadka",
+        about: "Ku Saabsan",
+        getHelpNow: "Hel Caawimo Hadda"
+      },
+      // Hero Section
+      hero: {
+        stateOf: "Gobolka Minnesota",
+        title: "ReEntry Connect MN",
+        description: "Hagaha kheyraadka ee ku xira dadka ka soo laabanaya xabsiga oo leh guryo, shaqo, caawimo sharci, daryeel caafimaad, iyo adeegyada muhiimka ah ee Minnesota oo dhan.",
+        findResources: "Raadi Kheyraadka",
+        aboutProgram: "Ku Saabsan Barnaamijkan"
+      },
+      // Stats
+      stats: {
+        resources: "Kheyraadka",
+        categories: "Qaybaha",
+        aiAssistant: "Caawiye AI",
+        always: "Mar walba"
+      },
+      // Categories Section
+      categories: {
+        title: "Hel Caawimada Aad U Baahan Tahay",
+        subtitle: "Baadh kheyraadka si aad u hesho adeegyada ku habboon baahidaada",
+        viewAll: "Arag Dhammaan Kheyraadka",
+        housing: "Guryo & Hoy",
+        legal: "Caawimo Sharci",
+        employment: "Adeegyada Shaqada",
+        healthcare: "Caafimaad & Maskaxda",
+        education: "Waxbarasho & Tababar",
+        food: "Caawimo Cunto"
+      },
+      // How It Works
+      howItWorks: {
+        title: "Sidee U Shaqeeyaa",
+        subtitle: "Helitaanka caawimo waa fudud. Halkan waxaa ku yaal sida loo helo kheyraadka aad u baahan tahay.",
+        step1Title: "1. Raadi",
+        step1Desc: "Raadi qaybta, goobta, ama ereyga si aad u hesho kheyraadka kuu dhow",
+        step2Title: "2. Ku Xidh",
+        step2Desc: "Arag faahfaahinta, saacadaha, iyo macluumaadka la xiriirka ee kheyraad kasta",
+        step3Title: "3. Hel Caawimo",
+        step3Desc: "Si toos ah ula xiriir ama isticmaal caawiyaha AI-ga hagitaanka"
+      },
+      // CTA Section
+      cta: {
+        title: "Diyaar Ma U Tahay Inaad Bilaabato?",
+        description: "Caawiyahayaga AI wuxuu diyaar u yahay 24/7 si uu kugu caawiyo helitaanka kheyraadka saxda ah. Guji sumadda wadahadalka geeska si aad u bilowdo wada hadal.",
+        browseNow: "Baadh Kheyraadka Hadda"
+      },
+      // Resources Page
+      resources: {
+        title: "Raadi Kheyraadka",
+        subtitle: "Raadi oo shaandhee si aad u hesho adeegyada aad u baahan tahay Minnesota",
+        searchPlaceholder: "Raadi kheyraadka, adeegyada, ama goobaha...",
+        list: "Liiska",
+        map: "Khariidada",
+        all: "Dhammaan",
+        found: "kheyraad la helay",
+        foundSingular: "kheyraad la helay",
+        in: "gudaha",
+        noResults: "Lama helin kheyraad",
+        noResultsDesc: "Isku day inaad beddeshid raadintaada ama shuruudaha shaandhaynta",
+        callNow: "Wac Hadda"
+      },
+      // Resource Details
+      resourceDetail: {
+        contactInfo: "Macluumaadka La Xiriirka",
+        address: "Cinwaanka",
+        phone: "Telefoonka",
+        website: "Websaydhka",
+        hours: "Saacadaha",
+        services: "Adeegyada La Bixiyo",
+        eligibility: "U Qalmitaanka"
+      },
+      // About Page
+      about: {
+        title: "Ku Saabsan ReEntry Connect MN",
+        subtitle: "Waxaan u heellannahay inaan caawino dadka ka soo laabanaya xabsiga inay helaan kheyraadka ay u baahan yihiin si ay si guul leh ugu soo noqdaan bulshadadooda Minnesota oo dhan.",
+        missionTitle: "Hadafkayaga",
+        missionSubtitle: "Ku Xirida Dadka Fursadaha",
+        missionP1: "ReEntry Connect MN waxaa loo sameeyay si loo wajaho baahi muhiim ah: caawinta dadka ka soo laabanaya xabsiga inay maraan kheyraadka adag ee ka jira Minnesota.",
+        missionP2: "Waan fahamsanahay in kala guurka xabsiga ilaa nolosha bulshada ay noqon karto mid aad u adag. Helitaanka guryo, shaqo, daryeel caafimaad, iyo adeegyo kale oo muhiim ah ma aha inay ku daraan walbahaarka.",
+        missionP3: "Sidaas darteed waxaan dhisnay barnaamij dhameystiran oo sahlan oo dhigaya dhammaan macluumaadka aad u baahan tahay meel keliya, oo ay la socoto caawiye AI oo diyaar u ah 24/7 si uu kugu caawiyo socdaalkaaga.",
+        valuesTitle: "Qiyamkayaga",
+        valuesSubtitle: "Waxa Na Haga",
+        compassion: "Naxariis",
+        compassionDesc: "Waxaan rumaysanahay in qof walba uu xaq u leeyahay fursad labaad waxaanan u muuqanaa shaqadayada naxariis iyo faham.",
+        dignity: "Sharaf",
+        dignityDesc: "Waxaan ixtiraamaa sharafta dhammaan dadka waxaanan u heellannahay inaan bixino taageero aan xukun lahayn.",
+        community: "Bulsho",
+        communityDesc: "Waxaan la shaqaynaynaa iskaashiyada bulshada si aan u abuurno shabakad taageero ah kuwa guryahooda ku soo laabanaya.",
+        featuresTitle: "Astaamaha Barnaamijka",
+        featuresSubtitle: "Loo Dhisay Baahidaada",
+        featuresDesc: "ReEntry Connect MN waxaa loo qaabeeyay adiga. Waxaan abuurnay astaamo ka dhigaya helitaanka iyo ku xirnaanta kheyraadka mid aad u fudud.",
+        feature1: "Hagaha kheyraadka oo dhammaystiran ee Minnesota",
+        feature2: "Raadinta iyo shaandhaynta fudud",
+        feature3: "Khariidad dhaqdhaqaaqa ah oo lagu helo adeegyada kuu dhow",
+        feature4: "Caawiye AI ah oo hagitaan gaar ah",
+        feature5: "Macluumaadka kheyraadka oo si joogto ah loo cusboonaysiiyo",
+        feature6: "Naqshad mobile-friendly ah oo meel kasta laga geli karo",
+        ctaTitle: "Bilow Raadintaada Maanta",
+        ctaDesc: "Ha ahaato inaad raadinayso guryo, shaqo, caawimo sharci, ama adeegyo kale, waxaan halkaan u joogaa inaan ku caawino helitaanka waxa aad u baahan tahay.",
+        browseResources: "Baadh Kheyraadka"
+      },
+      // Chatbot
+      chat: {
+        title: "Caawiyaha Soo-noqoshada",
+        subtitle: "Halkan si aan kaaga caawino 24/7",
+        placeholder: "Ku qor fariintaada...",
+        disclaimer: "Caawiyaha AI wuxuu samayn karaa khaladaad. Xaqiiji macluumaadka muhiimka ah.",
+        greeting: "Salaan! Waxaan halkan u joogaa inaan ku caawiyo helitaanka kheyraadka socdaalkaaga soo-noqoshada ee Minnesota. Noocee caawimo ah ayaad maanta raadinaysaa?",
+        thinking: "Waan fikiraa...",
+        error: "Waan ka xumahay, laakiin waxaan la kulanyay dhibaato isku xirista. Fadlan isku day mar kale dhawayd, ama si toos ah u baadh hagahayaga kheyraadka."
+      },
+      // Language
+      language: {
+        en: "English",
+        es: "Español",
+        so: "Soomaali",
+        hmn: "Hmoob"
+      },
+      // Footer
+      footer: {
+        copyright: "© 2025 ReEntry Connect MN"
+      }
+    }
+  },
+  hmn: {
+    translation: {
+      // Navigation
+      nav: {
+        home: "Tsev",
+        findResources: "Nrhiav Cov Kev Pab",
+        about: "Hais Txog",
+        getHelpNow: "Tau Kev Pab Tam Sim No"
+      },
+      // Hero Section
+      hero: {
+        stateOf: "Xeev Minnesota",
+        title: "ReEntry Connect MN",
+        description: "Phau ntawv qhia txog cov kev pab uas txuas cov neeg rov qab los ntawm kev raug kaw nrog tsev nyob, hauj lwm, kev pab lij choj, kev kho mob, thiab cov kev pab tseem ceeb thoob plaws Minnesota.",
+        findResources: "Nrhiav Cov Kev Pab",
+        aboutProgram: "Hais Txog Qhov Program No"
+      },
+      // Stats
+      stats: {
+        resources: "Cov Kev Pab",
+        categories: "Pawg",
+        aiAssistant: "AI Pab",
+        always: "Ib txwm"
+      },
+      // Categories Section
+      categories: {
+        title: "Nrhiav Kev Pab Uas Koj Xav Tau",
+        subtitle: "Xauj cov kev pab los ntawm pawg kom nrhiav tau cov kev pab uas haum rau koj qhov kev xav tau",
+        viewAll: "Saib Tag Nrho Cov Kev Pab",
+        housing: "Tsev Nyob & Chaw Nyob",
+        legal: "Kev Pab Lij Choj",
+        employment: "Kev Pab Nrhiav Hauj Lwm",
+        healthcare: "Kev Kho Mob & Kev Puas Siab Puas Ntsws",
+        education: "Kev Kawm & Kev Cob Qhia",
+        food: "Kev Pab Zaub Mov"
+      },
+      // How It Works
+      howItWorks: {
+        title: "Nws Ua Hauj Lwm Li Cas",
+        subtitle: "Tau kev pab yooj yim heev. Nov yog yuav ua li cas nrhiav cov kev pab uas koj xav tau.",
+        step1Title: "1. Nrhiav",
+        step1Desc: "Nrhiav los ntawm pawg, qhov chaw, los yog lo lus tseem ceeb kom nrhiav tau cov kev pab ze koj",
+        step2Title: "2. Txuas",
+        step2Desc: "Saib cov ntsiab lus, teev sij hawm, thiab cov ntaub ntawv tiv tauj rau txhua qhov kev pab",
+        step3Title: "3. Tau Kev Pab",
+        step3Desc: "Hu ncaj qha los yog siv peb tus AI pab rau kev qhia"
+      },
+      // CTA Section
+      cta: {
+        title: "Npaj Pib Lawm?",
+        description: "Peb tus AI pab muaj 24/7 los pab koj nrhiav cov kev pab zoo. Nyem lub cim sib tham hauv lub ces kaum kom pib sib tham.",
+        browseNow: "Xauj Cov Kev Pab Tam Sim No"
+      },
+      // Resources Page
+      resources: {
+        title: "Nrhiav Cov Kev Pab",
+        subtitle: "Nrhiav thiab lim kom nrhiav tau cov kev pab uas koj xav tau hauv Minnesota",
+        searchPlaceholder: "Nrhiav cov kev pab, kev pab cuam, los yog qhov chaw...",
+        list: "Daim Ntawv",
+        map: "Daim Duab Qhia",
+        all: "Tag Nrho",
+        found: "cov kev pab nrhiav tau",
+        foundSingular: "kev pab nrhiav tau",
+        in: "hauv",
+        noResults: "Tsis nrhiav tau kev pab",
+        noResultsDesc: "Sim kho koj qhov kev nrhiav los yog cov kev xaiv",
+        callNow: "Hu Tam Sim No"
+      },
+      // Resource Details
+      resourceDetail: {
+        contactInfo: "Ntaub Ntawv Tiv Tauj",
+        address: "Chaw Nyob",
+        phone: "Xov Tooj",
+        website: "Lub Vev Xaib",
+        hours: "Teev Sij Hawm",
+        services: "Cov Kev Pab Muaj",
+        eligibility: "Kev Tsim Nyog"
+      },
+      // About Page
+      about: {
+        title: "Hais Txog ReEntry Connect MN",
+        subtitle: "Peb mob siab rau kev pab cov neeg rov qab los ntawm kev raug kaw nrhiav cov kev pab uas lawv xav tau kom rov qab los koom nrog lawv cov zej zog hauv Minnesota.",
+        missionTitle: "Peb Lub Hom Phiaj",
+        missionSubtitle: "Txuas Neeg Rau Cov Hauv Kev",
+        missionP1: "ReEntry Connect MN tau tsim los daws ib qho kev xav tau tseem ceeb: pab cov neeg rov qab los ntawm kev raug kaw taug kev hauv cov kev pab nyuaj hauv Minnesota.",
+        missionP2: "Peb to taub tias kev hloov los ntawm kev raug kaw mus rau lub neej hauv zej zog tuaj yeem ua rau nyuaj heev. Nrhiav tsev nyob, hauj lwm, kev kho mob, thiab lwm yam kev pab tseem ceeb yuav tsum tsis txhob ntxiv rau qhov kev ntxhov siab ntawd.",
+        missionP3: "Yog li ntawd peb tau tsim ib qho kev pab cuam yooj yim siv uas muab tag nrho cov ntaub ntawv uas koj xav tau hauv ib qho chaw, nrog rau tus AI pab 24/7 los pab coj koj hauv koj txoj kev.",
+        valuesTitle: "Peb Cov Nqi",
+        valuesSubtitle: "Yam Uas Coj Peb",
+        compassion: "Kev Hlub Tshua",
+        compassionDesc: "Peb ntseeg tias txhua tus neeg tsim nyog tau txais lub sijhawm thib ob thiab peb ua peb txoj haujlwm nrog kev hlub tshua thiab kev nkag siab.",
+        dignity: "Kev Hwm",
+        dignityDesc: "Peb hwm txhua tus neeg txoj kev muaj nuj nqis thiab peb cog lus tias yuav muab kev txhawb nqa tsis txiav txim.",
+        community: "Zej Zog",
+        communityDesc: "Peb ua haujlwm nrog cov koom haum hauv zej zog los tsim ib lub network ntawm kev txhawb nqa rau cov neeg rov qab los tsev.",
+        featuresTitle: "Cov Yam Ntxwv Ntawm Platform",
+        featuresSubtitle: "Tsim Rau Koj Qhov Kev Xav Tau",
+        featuresDesc: "ReEntry Connect MN tau tsim nrog koj hauv siab. Peb tau tsim cov yam ntxwv uas ua rau kev nrhiav thiab txuas nrog cov kev pab yooj yim li sai tau.",
+        feature1: "Phau ntawv qhia kev pab tag nrho rau Minnesota",
+        feature2: "Kev nrhiav thiab lim yooj yim",
+        feature3: "Daim duab qhia interactive los nrhiav cov kev pab ze",
+        feature4: "AI pab rau kev qhia tus kheej",
+        feature5: "Cov ntaub ntawv kev pab hloov tshiab tas li",
+        feature6: "Tsim rau xov tooj kom nkag tau qhov twg los tau",
+        ctaTitle: "Pib Koj Txoj Kev Nrhiav Hnub No",
+        ctaDesc: "Txawm tias koj tab tom nrhiav tsev nyob, hauj lwm, kev pab lij choj, los yog lwm yam kev pab, peb nyob ntawm no los pab koj nrhiav yam koj xav tau.",
+        browseResources: "Xauj Cov Kev Pab"
+      },
+      // Chatbot
+      chat: {
+        title: "Tus Pab Rov Qab Los",
+        subtitle: "Nyob ntawm no pab 24/7",
+        placeholder: "Ntaus koj cov lus...",
+        disclaimer: "AI pab yuav ua tau yuam kev. Xyuas cov ntaub ntawv tseem ceeb.",
+        greeting: "Nyob zoo! Kuv nyob ntawm no los pab koj nrhiav cov kev pab rau koj txoj kev rov qab los hauv Minnesota. Hom kev pab twg koj tab tom nrhiav hnub no?",
+        thinking: "Tab tom xav...",
+        error: "Kuv thov txim, tab sis kuv muaj teeb meem txuas tam sim no. Thov sim dua ib pliag, los yog xauj peb phau ntawv qhia kev pab ncaj qha."
+      },
+      // Language
+      language: {
+        en: "English",
+        es: "Español",
+        so: "Soomaali",
+        hmn: "Hmoob"
       },
       // Footer
       footer: {
