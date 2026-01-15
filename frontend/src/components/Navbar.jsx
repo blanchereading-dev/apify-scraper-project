@@ -15,8 +15,9 @@ const Navbar = () => {
   const { count } = useFavorites();
 
   const navLinks = [
-    { path: "/", label: t('nav.home') },
-    { path: "/resources", label: t('nav.findResources') },
+    { path: "/", label: "Home" },
+    { path: "/resources", label: "Resources" },
+    { path: "/how-to", label: "How To" },
     { path: "/favorites", label: "Saved", icon: Heart, badge: count },
   ];
 

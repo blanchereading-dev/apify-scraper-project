@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Home from "@/pages/Home";
 import Resources from "@/pages/Resources";
 import Favorites from "@/pages/Favorites";
+import HowTo from "@/pages/HowTo";
 import ChatBot from "@/components/ChatBot";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/favorites" element={<Favorites />} />
+              <Route path="/how-to" element={<HowTo />} />
             </Routes>
           </main>
           <ChatBot />
