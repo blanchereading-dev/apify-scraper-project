@@ -50,61 +50,57 @@ code {
 @layer base {
     :root {
         /* ReEntry Connect MN Design System */
-        --nordic-deep: 210 52% 23%;
-        --limestone: 220 14% 96%;
-        --sky-hope: 201 96% 39%;
+        --primary-dark: #0e3d69;
+        --primary-light: #7cafde;
+        --background: #fafdff;
+        --text-primary: #000000;
         
-        --background: 0 0% 100%;
-        --foreground: 222 47% 11%;
-        --card: 0 0% 100%;
-        --card-foreground: 222 47% 11%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 222 47% 11%;
-        --primary: 210 52% 23%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 220 14% 96%;
-        --secondary-foreground: 222 47% 11%;
-        --muted: 220 14% 96%;
-        --muted-foreground: 215 16% 47%;
-        --accent: 201 96% 39%;
-        --accent-foreground: 0 0% 100%;
+        --background: 210 100% 99%;
+        --foreground: 0 0% 0%;
+        --card: 210 100% 99%;
+        --card-foreground: 0 0% 0%;
+        --popover: 210 100% 99%;
+        --popover-foreground: 0 0% 0%;
+        --primary: 211 77% 24%;
+        --primary-foreground: 210 100% 99%;
+        --secondary: 211 52% 65%;
+        --secondary-foreground: 0 0% 0%;
+        --muted: 210 20% 96%;
+        --muted-foreground: 0 0% 40%;
+        --accent: 211 52% 65%;
+        --accent-foreground: 0 0% 0%;
         --destructive: 0 84% 60%;
         --destructive-foreground: 0 0% 98%;
         --border: 214 32% 91%;
         --input: 214 32% 91%;
-        --ring: 201 96% 39%;
-        --chart-1: 210 52% 23%;
-        --chart-2: 201 96% 39%;
+        --ring: 211 52% 65%;
+        --chart-1: 211 77% 24%;
+        --chart-2: 211 52% 65%;
         --chart-3: 142 71% 45%;
         --chart-4: 38 92% 50%;
         --chart-5: 0 84% 60%;
         --radius: 0.5rem;
-        
-        /* Status colors */
-        --success: 160 84% 39%;
-        --warning: 38 92% 50%;
-        --error: 0 84% 60%;
     }
     .dark {
-        --background: 222 47% 11%;
-        --foreground: 0 0% 98%;
-        --card: 222 47% 11%;
-        --card-foreground: 0 0% 98%;
-        --popover: 222 47% 11%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 201 96% 39%;
-        --primary-foreground: 0 0% 100%;
-        --secondary: 217 33% 17%;
-        --secondary-foreground: 0 0% 98%;
+        --background: 0 0% 0%;
+        --foreground: 210 100% 99%;
+        --card: 211 77% 24%;
+        --card-foreground: 210 100% 99%;
+        --popover: 211 77% 24%;
+        --popover-foreground: 210 100% 99%;
+        --primary: 211 52% 65%;
+        --primary-foreground: 0 0% 0%;
+        --secondary: 211 77% 24%;
+        --secondary-foreground: 210 100% 99%;
         --muted: 217 33% 17%;
         --muted-foreground: 215 20% 65%;
-        --accent: 201 96% 39%;
-        --accent-foreground: 0 0% 100%;
+        --accent: 211 52% 65%;
+        --accent-foreground: 0 0% 0%;
         --destructive: 0 62% 30%;
         --destructive-foreground: 0 0% 98%;
         --border: 217 33% 17%;
         --input: 217 33% 17%;
-        --ring: 201 96% 39%;
+        --ring: 211 52% 65%;
     }
 }
 
