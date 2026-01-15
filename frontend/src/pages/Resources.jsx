@@ -539,7 +539,7 @@ const Resources = () => {
               variant={selectedCategory === "" ? "default" : "outline"}
               size="sm"
               onClick={() => handleCategoryClick("")}
-              className={`flex-shrink-0 ${selectedCategory === "" ? "bg-[#1B3B5A]" : ""}`}
+              className={`flex-shrink-0 ${selectedCategory === "" ? "bg-[#1B3B5A] text-white" : "text-[#0F172A] border-slate-300 hover:bg-slate-100"}`}
               data-testid="filter-all"
             >
               <Filter className="w-4 h-4 mr-1" />
@@ -554,7 +554,7 @@ const Resources = () => {
                   variant={isActive ? "default" : "outline"}
                   size="sm"
                   onClick={() => handleCategoryClick(category.id)}
-                  className={`flex-shrink-0 filter-tag ${isActive ? "bg-[#1B3B5A]" : ""}`}
+                  className={`flex-shrink-0 filter-tag ${isActive ? "bg-[#1B3B5A] text-white" : "text-[#0F172A] border-slate-300 hover:bg-slate-100"}`}
                   data-testid={`filter-${category.id}`}
                 >
                   <IconComponent className="w-4 h-4 mr-1" />
