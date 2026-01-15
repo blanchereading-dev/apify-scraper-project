@@ -82,11 +82,11 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-[#7cafde] rounded-lg flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 bg-[#b8d4ed] rounded-lg flex items-center justify-center">
+                <MapPin className="w-6 h-6 text-[#0e3d69]" />
               </div>
               <h1 className="text-2xl sm:text-3xl font-bold text-white">
-                ReEntry Connect <span className="text-[#7cafde]">MN</span>
+                ReEntry Connect <span className="text-[#b8d4ed]">MN</span>
               </h1>
             </div>
             
@@ -139,7 +139,7 @@ const Home = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-16 bg-[#7cafde]">
+      <section className="py-16 bg-[#b8d4ed]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
@@ -200,12 +200,12 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-[#7cafde] rounded-lg flex items-center justify-center">
-                <MapPin className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 bg-[#b8d4ed] rounded-lg flex items-center justify-center">
+                <MapPin className="w-5 h-5 text-[#0e3d69]" />
               </div>
               <div>
                 <span className="font-bold text-white text-lg">ReEntry Connect</span>
-                <span className="text-[#7cafde] font-semibold ml-1">MN</span>
+                <span className="text-[#b8d4ed] font-semibold ml-1">MN</span>
               </div>
             </div>
             
