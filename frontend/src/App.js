@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import Resources from "@/pages/Resources";
 import Favorites from "@/pages/Favorites";
 import HowTo from "@/pages/HowTo";
+import Feedback from "@/pages/Feedback";
 import ChatBot from "@/components/ChatBot";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
               <Route path="/resources" element={<Resources />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/how-to" element={<HowTo />} />
+              <Route path="/feedback" element={<Feedback />} />
             </Routes>
           </main>
           <ChatBot />
