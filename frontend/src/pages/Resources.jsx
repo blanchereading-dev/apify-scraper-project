@@ -364,22 +364,6 @@ const Resources = () => {
               )}
             </div>
 
-            {/* How to access */}
-            {resource.access_method && (
-              <div className="bg-amber-50 border border-amber-100 rounded-lg p-4">
-                <h4 className="text-xs font-medium text-amber-700 uppercase tracking-wide mb-2">How to access</h4>
-                <p className="text-amber-800 text-sm">{resource.access_method}</p>
-              </div>
-            )}
-
-            {/* What to expect */}
-            {resource.what_to_expect && (
-              <div>
-                <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2">What to expect</h4>
-                <p className="text-slate-600 text-sm">{resource.what_to_expect}</p>
-              </div>
-            )}
-
             {/* Contact Information */}
             <div className="space-y-4">
               <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wide">Contact</h4>
