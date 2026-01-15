@@ -180,7 +180,14 @@ async def chat_with_ai(request: ChatRequest):
     if not EMERGENT_LLM_KEY:
         raise HTTPException(status_code=500, detail="LLM API key not configured")
     
-    system_message = """You help people find reentry resources in Minnesota. Keep every response under 75 characters. Ask one clarifying question if needed. No lists. No special characters except commas, periods, and question marks. Be warm and direct."""
+    system_message = """You help people find reentry resources in Minnesota. 
+
+Rules:
+- Start with one short question to understand what they need.
+- Keep asking one question at a time until you understand their situation.
+- Once you have enough info, give a helpful answer in 4 sentences max.
+- Be warm and supportive. No lists or bullet points.
+- No special characters except commas, periods, and question marks."""
 
     try:
         chat = LlmChat(
@@ -199,14 +206,6 @@ async def chat_with_ai(request: ChatRequest):
         # Clean response - only allow letters, numbers, spaces, and _ , . ?
         import re
         cleaned = re.sub(r'[^a-zA-Z0-9\s_,.\?]', '', response)
-        # Limit to 75 characters
-        if len(cleaned) > 75:
-            # Try to cut at last space before 75
-            cut_point = cleaned[:75].rfind(' ')
-            if cut_point > 50:
-                cleaned = cleaned[:cut_point]
-            else:
-                cleaned = cleaned[:75]
         
         return ChatResponse(response=cleaned.strip(), session_id=request.session_id)
     
