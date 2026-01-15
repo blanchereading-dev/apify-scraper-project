@@ -110,39 +110,23 @@ const Home = () => {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="py-14 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-2">
-              How It Works
-            </h2>
-            <p className="text-slate-500 text-base">Three simple steps to find help</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center" data-testid="step-1">
-              <div className="w-14 h-14 bg-[#1B3B5A] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="font-semibold text-lg text-[#0F172A] mb-2">1. Search</h3>
-              <p className="text-slate-600 text-sm">Browse by category or search for specific services near you</p>
+      {/* How It Works - Compact */}
+      <section className="py-8 bg-white border-b border-slate-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-[#0284C7] rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
+              <span className="text-slate-700 font-medium">Search by category</span>
             </div>
-
-            <div className="text-center" data-testid="step-2">
-              <div className="w-14 h-14 bg-[#1B3B5A] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="font-semibold text-lg text-[#0F172A] mb-2">2. Connect</h3>
-              <p className="text-slate-600 text-sm">View details, hours, and contact information for each resource</p>
+            <div className="hidden md:block w-12 h-px bg-slate-300"></div>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-[#0284C7] rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
+              <span className="text-slate-700 font-medium">View contact details</span>
             </div>
-
-            <div className="text-center" data-testid="step-3">
-              <div className="w-14 h-14 bg-[#1B3B5A] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="font-semibold text-lg text-[#0F172A] mb-2">3. Get Help</h3>
-              <p className="text-slate-600 text-sm">Reach out directly or chat with our AI assistant for guidance</p>
+            <div className="hidden md:block w-12 h-px bg-slate-300"></div>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-[#0284C7] rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
+              <span className="text-slate-700 font-medium">Reach out for help</span>
             </div>
           </div>
         </div>
