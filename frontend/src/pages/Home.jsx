@@ -113,11 +113,22 @@ const Home = () => {
       {/* How To Use Strip */}
       <section className="py-6 bg-white border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-slate-600 text-base">
-            <span className="font-medium text-[#0e3d69]">Find what you need</span> by browsing categories below — 
-            <span className="font-medium text-[#0e3d69]">save resources</span> to your list — 
-            <span className="font-medium text-[#0e3d69]">reach out</span> when you're ready
-          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-slate-600">
+            <div className="flex items-center gap-2">
+              <Search className="w-5 h-5 text-[#7cafde]" />
+              <span><span className="font-medium text-[#0e3d69]">Find what you need</span> by browsing below</span>
+            </div>
+            <span className="hidden sm:inline text-slate-300">•</span>
+            <div className="flex items-center gap-2">
+              <Heart className="w-5 h-5 text-[#7cafde]" />
+              <span><span className="font-medium text-[#0e3d69]">Save resources</span> to your list</span>
+            </div>
+            <span className="hidden sm:inline text-slate-300">•</span>
+            <div className="flex items-center gap-2">
+              <Phone className="w-5 h-5 text-[#7cafde]" />
+              <span><span className="font-medium text-[#0e3d69]">Reach out</span> when you're ready</span>
+            </div>
+          </div>
         </div>
       </section>
 
