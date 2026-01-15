@@ -111,22 +111,13 @@ const Home = () => {
       </section>
 
       {/* How To Use Strip */}
-      <section className="py-5 bg-[#0e3d69]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-4">
-            <div className="flex items-center gap-3 text-white">
-              <div className="w-8 h-8 rounded-full bg-[#7cafde]/30 flex items-center justify-center text-sm font-bold">1</div>
-              <span className="text-sm">Browse or search by category</span>
-            </div>
-            <div className="flex items-center gap-3 text-white">
-              <div className="w-8 h-8 rounded-full bg-[#7cafde]/30 flex items-center justify-center text-sm font-bold">2</div>
-              <span className="text-sm">Save resources you need</span>
-            </div>
-            <div className="flex items-center gap-3 text-white">
-              <div className="w-8 h-8 rounded-full bg-[#7cafde]/30 flex items-center justify-center text-sm font-bold">3</div>
-              <span className="text-sm">Call or visit to get help</span>
-            </div>
-          </div>
+      <section className="py-6 bg-white border-b border-slate-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-slate-600 text-base">
+            <span className="font-medium text-[#0e3d69]">Find what you need</span> by browsing categories below — 
+            <span className="font-medium text-[#0e3d69]">save resources</span> to your list — 
+            <span className="font-medium text-[#0e3d69]">reach out</span> when you're ready
+          </p>
         </div>
       </section>
 
