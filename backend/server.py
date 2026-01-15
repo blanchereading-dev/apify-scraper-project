@@ -56,6 +56,13 @@ class Resource(BaseModel):
     latitude: float
     longitude: float
     eligibility: Optional[str] = None
+    # Enhanced fields
+    serving_area: Optional[str] = None
+    access_method: Optional[str] = None
+    good_fit_if: Optional[str] = None
+    what_to_expect: Optional[str] = None
+    reentry_focused: bool = True
+    cost: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
@@ -75,6 +82,13 @@ class ResourceCreate(BaseModel):
     latitude: float
     longitude: float
     eligibility: Optional[str] = None
+    # Enhanced fields
+    serving_area: Optional[str] = None
+    access_method: Optional[str] = None
+    good_fit_if: Optional[str] = None
+    what_to_expect: Optional[str] = None
+    reentry_focused: bool = True
+    cost: Optional[str] = None
 
 class ChatMessage(BaseModel):
     role: str
