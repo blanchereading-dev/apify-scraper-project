@@ -209,6 +209,8 @@ const Home = () => {
             <div className="flex items-center gap-6 text-slate-400 text-sm">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <Link to="/resources" className="hover:text-white transition-colors">Find Resources</Link>
+              <Link to="/how-to" className="hover:text-white transition-colors">How To</Link>
+              <Link to="/feedback" className="hover:text-white transition-colors">Feedback</Link>
             </div>
             
             <p className="text-slate-500 text-sm">
