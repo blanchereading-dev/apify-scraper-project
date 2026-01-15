@@ -109,28 +109,25 @@ const Home = () => {
         </div>
       </section>
 
-      {/* How It Works - Compact */}
-      <section className="py-6 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#1B3B5A] rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
-              <span className="text-slate-600 text-sm">Filter by need</span>
+      {/* Features Strip */}
+      <section className="py-4 bg-[#0e3d69]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-3">
+            <div className="flex items-center gap-2 text-white/90">
+              <Search className="w-4 h-4 text-[#7cafde]" />
+              <span className="text-sm">76 resources</span>
             </div>
-            <div className="hidden md:block w-8 h-px bg-slate-300"></div>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#1B3B5A] rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
-              <span className="text-slate-600 text-sm">Save to your list</span>
+            <div className="flex items-center gap-2 text-white/90">
+              <MapPin className="w-4 h-4 text-[#7cafde]" />
+              <span className="text-sm">Statewide coverage</span>
             </div>
-            <div className="hidden md:block w-8 h-px bg-slate-300"></div>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#1B3B5A] rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
-              <span className="text-slate-600 text-sm">Call or visit</span>
+            <div className="flex items-center gap-2 text-white/90">
+              <Heart className="w-4 h-4 text-[#7cafde]" />
+              <span className="text-sm">Save favorites</span>
             </div>
-            <div className="hidden md:block w-8 h-px bg-slate-300"></div>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#1B3B5A] rounded-full flex items-center justify-center text-white text-sm font-bold">?</div>
-              <span className="text-slate-600 text-sm">Chat for help</span>
+            <div className="flex items-center gap-2 text-white/90">
+              <MessageCircle className="w-4 h-4 text-[#7cafde]" />
+              <span className="text-sm">24/7 AI assistant</span>
             </div>
           </div>
         </div>
