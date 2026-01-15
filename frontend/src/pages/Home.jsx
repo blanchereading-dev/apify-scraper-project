@@ -191,27 +191,15 @@ const Home = () => {
       </section>
 
       {/* FAQ Banner */}
-      <section className="py-8 bg-[#f8fafc]">
+      <section className="bg-[#e8f2fa] border-y border-[#7cafde]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 px-6 bg-white border border-slate-200 rounded-lg shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#7cafde]/20 rounded-full flex items-center justify-center">
-                <HelpCircle className="w-5 h-5 text-[#0e3d69]" />
-              </div>
-              <div>
-                <span className="text-[#0F172A] font-medium">Have questions about IDs, benefits, or expungement?</span>
-              </div>
-            </div>
-            <Link to="/how-to">
-              <Button 
-                data-testid="faq-banner-btn"
-                variant="outline"
-                size="sm"
-                className="border-[#0e3d69] text-[#0e3d69] hover:bg-[#0e3d69] hover:text-white font-medium"
-              >
-                View FAQs
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+          <div className="flex items-center justify-center gap-6 py-4">
+            <HelpCircle className="w-5 h-5 text-[#0e3d69]" />
+            <p className="text-[#0e3d69] text-sm">
+              Questions about <span className="font-medium">IDs</span>, <span className="font-medium">voting rights</span>, <span className="font-medium">expungement</span>, or <span className="font-medium">benefits</span>?
+            </p>
+            <Link to="/how-to" className="text-[#0e3d69] font-semibold text-sm hover:underline flex items-center gap-1">
+              View FAQs <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
