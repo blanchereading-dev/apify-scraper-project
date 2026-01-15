@@ -191,28 +191,26 @@ const Home = () => {
       </section>
 
       {/* FAQ Banner */}
-      <section className="py-10 bg-white border-y border-slate-200">
+      <section className="py-8 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-[#0e3d69] to-[#1B3B5A] rounded-xl p-8">
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
-                <HelpCircle className="w-7 h-7 text-white" />
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 px-6 bg-white border border-slate-200 rounded-lg shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-[#7cafde]/20 rounded-full flex items-center justify-center">
+                <HelpCircle className="w-5 h-5 text-[#0e3d69]" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white mb-1">Have Questions?</h3>
-                <p className="text-white/80 text-sm max-w-md">
-                  Get answers about IDs, voting rights, expungement, benefits, and more with links to official Minnesota resources.
-                </p>
+                <span className="text-[#0F172A] font-medium">Have questions about IDs, benefits, or expungement?</span>
               </div>
             </div>
             <Link to="/how-to">
               <Button 
                 data-testid="faq-banner-btn"
-                size="lg"
-                className="bg-white hover:bg-gray-100 text-[#0e3d69] font-semibold px-8 shadow-lg"
+                variant="outline"
+                size="sm"
+                className="border-[#0e3d69] text-[#0e3d69] hover:bg-[#0e3d69] hover:text-white font-medium"
               >
                 View FAQs
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
           </div>
