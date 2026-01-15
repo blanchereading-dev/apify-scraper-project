@@ -78,35 +78,32 @@ const Home = () => {
   return (
     <div className="min-h-screen" data-testid="home-page">
       {/* Hero Section */}
-      <section className="bg-[#1B3B5A] py-12 sm:py-14">
+      <section className="bg-[#0e3d69] py-10 sm:py-12 border-b-4 border-[#7cafde]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-[#b8d4ed] rounded-lg flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-[#0e3d69]" />
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 bg-[#fafdff] rounded flex items-center justify-center">
+                <MapPin className="w-5 h-5 text-[#0e3d69]" />
               </div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-white">
-                ReEntry Connect <span className="text-[#b8d4ed]">MN</span>
+              <h1 className="text-xl sm:text-2xl font-bold text-[#fafdff] tracking-tight">
+                ReEntry Connect <span className="text-[#7cafde]">MN</span>
               </h1>
             </div>
             
-            <p className="text-white/90 text-lg mb-6 leading-relaxed">
-              A community resource directory connecting individuals returning from incarceration 
-              with housing, employment, legal aid, healthcare, and essential services across Minnesota.
+            <p className="text-[#fafdff]/90 text-base mb-6 leading-relaxed max-w-2xl">
+              A community resource directory connecting individuals returning from incarceration with housing, employment, legal aid, healthcare, and essential services across Minnesota.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link to="/resources">
-                <Button 
-                  data-testid="hero-find-resources-btn"
-                  size="lg"
-                  className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-semibold px-8 py-6 text-lg transition-all duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto"
-                >
-                  Find Resources
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-            </div>
+            <Link to="/resources">
+              <Button 
+                data-testid="hero-find-resources-btn"
+                size="lg"
+                className="bg-[#7cafde] hover:bg-[#5a9ad4] text-[#0e3d69] font-semibold px-8 py-5 text-base transition-all duration-200 shadow-md hover:shadow-lg"
+              >
+                Find Resources
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
