@@ -536,10 +536,10 @@ const Resources = () => {
           {/* Category Filters */}
           <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
             <Button
-              variant={selectedCategory === "" ? "default" : "outline"}
+              variant="outline"
               size="sm"
               onClick={() => handleCategoryClick("")}
-              className={`flex-shrink-0 ${selectedCategory === "" ? "bg-[#1B3B5A] text-white" : "text-[#0F172A] border-slate-300 hover:bg-slate-100"}`}
+              className={`flex-shrink-0 border ${selectedCategory === "" ? "bg-[#1B3B5A] text-white border-[#1B3B5A]" : "bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200"}`}
               data-testid="filter-all"
             >
               <Filter className="w-4 h-4 mr-1" />
@@ -548,13 +548,14 @@ const Resources = () => {
             {categories.map((category) => {
               const IconComponent = iconMap[category.icon] || HomeIcon;
               const isActive = selectedCategory === category.id;
+              const colors = categoryColors[category.id] || categoryColors.housing;
               return (
                 <Button
                   key={category.id}
-                  variant={isActive ? "default" : "outline"}
+                  variant="outline"
                   size="sm"
                   onClick={() => handleCategoryClick(category.id)}
-                  className={`flex-shrink-0 filter-tag ${isActive ? "bg-[#1B3B5A] text-white" : "text-[#0F172A] border-slate-300 hover:bg-slate-100"}`}
+                  className={`flex-shrink-0 filter-tag border ${isActive ? `${colors.bg} ${colors.text} ${colors.border} font-semibold` : `${colors.bg} ${colors.text} ${colors.border} hover:opacity-80`}`}
                   data-testid={`filter-${category.id}`}
                 >
                   <IconComponent className="w-4 h-4 mr-1" />
