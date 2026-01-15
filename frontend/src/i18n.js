@@ -116,7 +116,7 @@ const resources = {
         subtitle: "Here to help 24/7",
         placeholder: "Type your message...",
         disclaimer: "AI assistant may make mistakes. Verify important information.",
-        greeting: "Hello! I'm here to help you find resources for your reentry journey in Minnesota. What kind of assistance are you looking for today? You can ask about housing, employment, legal aid, healthcare, education, or food assistance.",
+        greeting: "Hello! I'm here to help you find resources for your reentry journey in Minnesota. What kind of assistance are you looking for today?",
         thinking: "Thinking...",
         error: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or browse our resource directory directly for assistance."
       },
@@ -245,7 +245,7 @@ const resources = {
         subtitle: "Aquí para ayudar 24/7",
         placeholder: "Escribe tu mensaje...",
         disclaimer: "El asistente de IA puede cometer errores. Verifica la información importante.",
-        greeting: "¡Hola! Estoy aquí para ayudarte a encontrar recursos para tu proceso de reingreso en Minnesota. ¿Qué tipo de asistencia estás buscando hoy? Puedes preguntar sobre vivienda, empleo, asistencia legal, atención médica, educación o asistencia alimentaria.",
+        greeting: "¡Hola! Estoy aquí para ayudarte a encontrar recursos para tu proceso de reingreso en Minnesota. ¿Qué tipo de asistencia estás buscando hoy?",
         thinking: "Pensando...",
         error: "Lo siento, pero tengo problemas para conectarme en este momento. Por favor, intenta de nuevo en un momento, o explora nuestro directorio de recursos directamente para obtener asistencia."
       },
