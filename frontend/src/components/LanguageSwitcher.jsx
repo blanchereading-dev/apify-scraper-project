@@ -9,14 +9,26 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
+const languages = [
+  { code: 'en', label: 'English', short: 'EN' },
+  { code: 'es', label: 'Español', short: 'ES' },
+  { code: 'so', label: 'Soomaali', short: 'SO' },
+  { code: 'hmn', label: 'Hmoob', short: 'HMN' }
+];
+
 const LanguageSwitcher = () => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
   const [currentLang, setCurrentLang] = useState(i18n.language);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     localStorage.setItem('language', lng);
     setCurrentLang(lng);
+  };
+
+  const getCurrentShort = () => {
+    const lang = languages.find(l => l.code === currentLang);
+    return lang ? lang.short : 'EN';
   };
 
   return (
@@ -29,24 +41,20 @@ const LanguageSwitcher = () => {
           data-testid="language-switcher"
         >
           <Globe className="w-4 h-4" />
-          <span className="hidden sm:inline">{currentLang === 'en' ? 'EN' : 'ES'}</span>
+          <span className="hidden sm:inline">{getCurrentShort()}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem 
-          onClick={() => changeLanguage('en')}
-          className={currentLang === 'en' ? 'bg-slate-100' : ''}
-          data-testid="lang-en"
-        >
-          {t('language.en')}
-        </DropdownMenuItem>
-        <DropdownMenuItem 
-          onClick={() => changeLanguage('es')}
-          className={currentLang === 'es' ? 'bg-slate-100' : ''}
-          data-testid="lang-es"
-        >
-          {t('language.es')}
-        </DropdownMenuItem>
+        {languages.map((lang) => (
+          <DropdownMenuItem 
+            key={lang.code}
+            onClick={() => changeLanguage(lang.code)}
+            className={currentLang === lang.code ? 'bg-slate-100' : ''}
+            data-testid={`lang-${lang.code}`}
+          >
+            {lang.label}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
