@@ -180,18 +180,7 @@ async def chat_with_ai(request: ChatRequest):
     if not EMERGENT_LLM_KEY:
         raise HTTPException(status_code=500, detail="LLM API key not configured")
     
-    system_message = """You are a helpful assistant for ReEntry Connect MN, a resource directory for individuals being released from incarceration in Minnesota. 
-
-Your role is to:
-1. Help users find appropriate resources (housing, legal aid, employment, healthcare, education, food assistance, transportation)
-2. Provide information about reentry services in Minnesota
-3. Be compassionate, non-judgmental, and supportive
-4. Guide users to the resource directory when appropriate
-5. Provide practical advice about the reentry process
-
-When users ask about specific resources, suggest they use the search and filter features on the website to find current listings. Be encouraging and remind users that seeking help is a positive step.
-
-Important: Always be respectful of users' dignity. Avoid assumptions and provide clear, helpful guidance."""
+    system_message = """You help people find reentry resources in Minnesota. Keep every response under 75 characters. Ask one clarifying question if needed. No lists. No special characters except commas, periods, and question marks. Be warm and direct."""
 
     try:
         chat = LlmChat(
@@ -200,16 +189,26 @@ Important: Always be respectful of users' dignity. Avoid assumptions and provide
             system_message=system_message
         ).with_model("openai", "gpt-5.2")
         
-        # Build conversation context
-        for msg in request.history[-10:]:  # Keep last 10 messages for context
+        for msg in request.history[-10:]:
             if msg.role == "user":
                 await chat.send_message(UserMessage(text=msg.content))
-            # Assistant messages are already in the chat history
         
         user_message = UserMessage(text=request.message)
         response = await chat.send_message(user_message)
         
-        return ChatResponse(response=response, session_id=request.session_id)
+        # Clean response - only allow letters, numbers, spaces, and _ , . ?
+        import re
+        cleaned = re.sub(r'[^a-zA-Z0-9\s_,.\?]', '', response)
+        # Limit to 75 characters
+        if len(cleaned) > 75:
+            # Try to cut at last space before 75
+            cut_point = cleaned[:75].rfind(' ')
+            if cut_point > 50:
+                cleaned = cleaned[:cut_point]
+            else:
+                cleaned = cleaned[:75]
+        
+        return ChatResponse(response=cleaned.strip(), session_id=request.session_id)
     
     except Exception as e:
         logger.error(f"Chat error: {str(e)}")
