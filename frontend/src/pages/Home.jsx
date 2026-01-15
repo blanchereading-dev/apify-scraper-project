@@ -11,7 +11,8 @@ import {
   ArrowRight,
   Phone,
   MapPin,
-  Users
+  Users,
+  Search
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -36,7 +37,7 @@ const categoryColors = {
   employment: "bg-emerald-100 text-emerald-700 hover:bg-emerald-200",
   healthcare: "bg-pink-100 text-pink-700 hover:bg-pink-200",
   education: "bg-indigo-100 text-indigo-700 hover:bg-indigo-200",
-  food: "bg-orange-100 text-orange-700 hover:bg-orange-200",
+  food: "bg-orange-100 text-orange-700 hover:bg-orange-600",
 };
 
 const Home = () => {
@@ -47,14 +48,12 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Seed database first
         await axios.post(`${API}/seed`);
         
         const [catRes, resRes] = await Promise.all([
           axios.get(`${API}/categories`),
           axios.get(`${API}/resources`)
         ]);
-        // Filter out transportation category
         setCategories(catRes.data.filter(c => c.id !== 'transportation'));
         setResourceCount(resRes.data.length);
       } catch (e) {
@@ -78,7 +77,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen" data-testid="home-page">
-      {/* Hero Section - Clean Community Style */}
+      {/* Hero Section */}
       <section className="bg-[#1B3B5A] py-12 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -102,7 +101,7 @@ const Home = () => {
                   data-testid="hero-find-resources-btn"
                   className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-medium px-6 transition-all duration-200 w-full sm:w-auto"
                 >
-                  {t('hero.findResources')}
+                  Find Resources
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
@@ -111,15 +110,53 @@ const Home = () => {
         </div>
       </section>
 
+      {/* How It Works Section */}
+      <section className="py-14 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-2">
+              How It Works
+            </h2>
+            <p className="text-slate-500 text-base">Three simple steps to find help</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center" data-testid="step-1">
+              <div className="w-14 h-14 bg-[#1B3B5A] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Search className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-lg text-[#0F172A] mb-2">1. Search</h3>
+              <p className="text-slate-600 text-sm">Browse by category or search for specific services near you</p>
+            </div>
+
+            <div className="text-center" data-testid="step-2">
+              <div className="w-14 h-14 bg-[#1B3B5A] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-lg text-[#0F172A] mb-2">2. Connect</h3>
+              <p className="text-slate-600 text-sm">View details, hours, and contact information for each resource</p>
+            </div>
+
+            <div className="text-center" data-testid="step-3">
+              <div className="w-14 h-14 bg-[#1B3B5A] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-lg text-[#0F172A] mb-2">3. Get Help</h3>
+              <p className="text-slate-600 text-sm">Reach out directly or chat with our AI assistant for guidance</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Categories Section */}
-      <section className="py-16 bg-[#F3F4F6] noise-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="py-16 bg-[#F8FAFC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
-              {t('categories.title')}
+              Find the Help You Need
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              {t('categories.subtitle')}
+              Browse resources by category to find services that match your needs
             </p>
           </div>
 
@@ -134,7 +171,7 @@ const Home = () => {
                   className={`animate-fade-in stagger-${Math.min(index + 1, 5)}`}
                   style={{ opacity: 0, animationFillMode: 'forwards' }}
                 >
-                  <Card className="resource-card border border-slate-200 hover:border-[#0284C7] cursor-pointer h-full">
+                  <Card className="resource-card border border-slate-200 hover:border-[#0284C7] cursor-pointer h-full bg-white">
                     <CardContent className="p-6 flex flex-col items-center text-center">
                       <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${categoryColors[category.id]}`}>
                         <IconComponent className="w-7 h-7" />
@@ -157,7 +194,7 @@ const Home = () => {
                 size="lg"
                 className="border-[#1B3B5A] text-[#1B3B5A] hover:bg-[#1B3B5A] hover:text-white font-medium px-8"
               >
-                {t('categories.viewAll')}
+                View All Resources
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -165,67 +202,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* How It Works Section - Condensed */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-2">
-              {t('howItWorks.title')}
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="text-center" data-testid="step-1">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                <MapPin className="w-6 h-6 text-[#0284C7]" />
-              </div>
-              <h3 className="font-semibold text-lg text-[#0F172A] mb-1">{t('howItWorks.step1Title')}</h3>
-              <p className="text-slate-600 text-sm">{t('howItWorks.step1Desc')}</p>
-            </div>
-
-            <div className="text-center" data-testid="step-2">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                <Users className="w-6 h-6 text-[#0284C7]" />
-              </div>
-              <h3 className="font-semibold text-lg text-[#0F172A] mb-1">{t('howItWorks.step2Title')}</h3>
-              <p className="text-slate-600 text-sm">{t('howItWorks.step2Desc')}</p>
-            </div>
-
-            <div className="text-center" data-testid="step-3">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                <Phone className="w-6 h-6 text-[#0284C7]" />
-              </div>
-              <h3 className="font-semibold text-lg text-[#0F172A] mb-1">{t('howItWorks.step3Title')}</h3>
-              <p className="text-slate-600 text-sm">{t('howItWorks.step3Desc')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Emergency Hotlines */}
       <EmergencyHotlines />
-
-      {/* CTA Section */}
-      <section className="py-16 bg-[#1B3B5A]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            {t('cta.title')}
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            {t('cta.description')}
-          </p>
-          <Link to="/resources">
-            <Button 
-              data-testid="cta-browse-btn"
-              size="lg"
-              className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-semibold px-10 py-6 text-lg transition-all duration-200 hover:translate-y-[-2px] hover:shadow-xl"
-            >
-              {t('cta.browseNow')}
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </Link>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-[#0F172A] py-12">
@@ -242,12 +220,12 @@ const Home = () => {
             </div>
             
             <div className="flex items-center gap-6 text-slate-400 text-sm">
-              <Link to="/" className="hover:text-white transition-colors">{t('nav.home')}</Link>
-              <Link to="/resources" className="hover:text-white transition-colors">{t('nav.findResources')}</Link>
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <Link to="/resources" className="hover:text-white transition-colors">Find Resources</Link>
             </div>
             
             <p className="text-slate-500 text-sm">
-              {t('footer.copyright')}
+              2025 ReEntry Connect MN
             </p>
           </div>
         </div>
