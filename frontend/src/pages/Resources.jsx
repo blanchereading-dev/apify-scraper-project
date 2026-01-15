@@ -51,12 +51,12 @@ const iconMap = {
 };
 
 const categoryColors = {
-  housing: { bg: "bg-blue-100", text: "text-blue-700", border: "border-blue-200" },
-  legal: { bg: "bg-amber-100", text: "text-amber-700", border: "border-amber-200" },
-  employment: { bg: "bg-emerald-100", text: "text-emerald-700", border: "border-emerald-200" },
-  healthcare: { bg: "bg-pink-100", text: "text-pink-700", border: "border-pink-200" },
-  education: { bg: "bg-indigo-100", text: "text-indigo-700", border: "border-indigo-200" },
-  food: { bg: "bg-orange-100", text: "text-orange-700", border: "border-orange-200" },
+  housing: { bg: "bg-blue-50", text: "text-blue-600", border: "border-blue-200" },
+  legal: { bg: "bg-amber-50", text: "text-amber-600", border: "border-amber-200" },
+  employment: { bg: "bg-emerald-50", text: "text-emerald-600", border: "border-emerald-200" },
+  healthcare: { bg: "bg-rose-50", text: "text-rose-600", border: "border-rose-200" },
+  education: { bg: "bg-indigo-50", text: "text-indigo-600", border: "border-indigo-200" },
+  food: { bg: "bg-orange-50", text: "text-orange-600", border: "border-orange-200" },
 };
 
 // Minnesota counties with major cities mapped
