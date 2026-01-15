@@ -197,7 +197,7 @@ const Home = () => {
               Questions about <span className="font-semibold">IDs</span>, <span className="font-semibold">voting rights</span>, <span className="font-semibold">expungement</span>, or <span className="font-semibold">benefits</span>?
             </p>
             <Link to="/how-to" className="text-[#0e3d69] font-bold text-lg hover:underline flex items-center gap-2">
-              View FAQs <ArrowRight className="w-5 h-5" />
+              Common Questions <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>
@@ -223,7 +223,7 @@ const Home = () => {
             <div className="flex items-center gap-6 text-slate-400 text-sm">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <Link to="/resources" className="hover:text-white transition-colors">Find Resources</Link>
-              <Link to="/how-to" className="hover:text-white transition-colors">FAQs</Link>
+              <Link to="/how-to" className="hover:text-white transition-colors">Common Questions</Link>
               <Link to="/feedback" className="hover:text-white transition-colors">Feedback</Link>
             </div>
             
