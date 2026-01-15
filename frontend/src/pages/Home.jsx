@@ -98,10 +98,10 @@ const Home = () => {
               <Button 
                 data-testid="hero-find-resources-btn"
                 size="lg"
-                className="bg-[#7cafde] hover:bg-[#5a9ad4] text-[#0e3d69] font-semibold px-8 py-5 text-base transition-all duration-200 shadow-md hover:shadow-lg"
+                className="bg-white hover:bg-gray-100 text-[#0e3d69] font-bold px-10 py-6 text-lg transition-all duration-200 shadow-lg hover:shadow-xl border-2 border-white hover:border-[#7cafde]"
               >
                 Find Resources
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-6 h-6" />
               </Button>
             </Link>
           </div>
