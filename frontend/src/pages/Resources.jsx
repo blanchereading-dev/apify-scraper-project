@@ -284,10 +284,17 @@ const Resources = () => {
         <SheetHeader className="pb-4 border-b">
           <div className="flex items-start justify-between">
             <div>
-              <Badge className={`${colors.bg} ${colors.text} ${colors.border} font-medium mb-2`}>
-                <IconComponent className="w-3 h-3 mr-1" />
-                {getCategoryName(resource.category)}
-              </Badge>
+              <div className="flex items-center gap-2 mb-2">
+                <Badge className={`${colors.bg} ${colors.text} ${colors.border} font-medium`}>
+                  <IconComponent className="w-3 h-3 mr-1" />
+                  {getCategoryName(resource.category)}
+                </Badge>
+                {resource.reentry_focused && (
+                  <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200 font-medium">
+                    Reentry-focused
+                  </Badge>
+                )}
+              </div>
               <SheetTitle className="text-xl font-bold text-[#0F172A]">
                 {resource.name}
               </SheetTitle>
@@ -307,12 +314,75 @@ const Resources = () => {
 
         <ScrollArea className="flex-1 pr-4">
           <div className="py-6 space-y-6">
-            <p className="text-slate-600 leading-relaxed">
-              {resource.description}
-            </p>
+            {/* What this program offers */}
+            <div>
+              <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2">What this program offers</h4>
+              <p className="text-slate-700 leading-relaxed">
+                {resource.description}
+              </p>
+            </div>
 
+            {/* Good fit if */}
+            {resource.good_fit_if && (
+              <div className="bg-blue-50 border border-blue-100 rounded-lg p-4">
+                <h4 className="text-xs font-medium text-blue-700 uppercase tracking-wide mb-2">Good fit if</h4>
+                <p className="text-blue-800 text-sm">{resource.good_fit_if}</p>
+              </div>
+            )}
+
+            {/* Services */}
+            {resource.services.length > 0 && (
+              <div>
+                <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2">Services</h4>
+                <div className="flex flex-wrap gap-2">
+                  {resource.services.map((service, idx) => (
+                    <Badge 
+                      key={idx}
+                      variant="secondary"
+                      className="bg-slate-100 text-slate-700 font-normal"
+                    >
+                      {service}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Serving Area & Cost */}
+            <div className="grid grid-cols-2 gap-4">
+              {resource.serving_area && (
+                <div>
+                  <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Serving Area</h4>
+                  <p className="text-slate-700 text-sm">{resource.serving_area}</p>
+                </div>
+              )}
+              {resource.cost && (
+                <div>
+                  <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Cost</h4>
+                  <p className="text-slate-700 text-sm">{resource.cost}</p>
+                </div>
+              )}
+            </div>
+
+            {/* How to access */}
+            {resource.access_method && (
+              <div className="bg-amber-50 border border-amber-100 rounded-lg p-4">
+                <h4 className="text-xs font-medium text-amber-700 uppercase tracking-wide mb-2">How to access</h4>
+                <p className="text-amber-800 text-sm">{resource.access_method}</p>
+              </div>
+            )}
+
+            {/* What to expect */}
+            {resource.what_to_expect && (
+              <div>
+                <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2">What to expect</h4>
+                <p className="text-slate-600 text-sm">{resource.what_to_expect}</p>
+              </div>
+            )}
+
+            {/* Contact Information */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-[#0F172A]">{t('resourceDetail.contactInfo')}</h4>
+              <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wide">Contact</h4>
               
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
@@ -320,7 +390,7 @@ const Resources = () => {
                     <MapPin className="w-5 h-5 text-slate-600" />
                   </div>
                   <div>
-                    <p className="font-medium text-[#0F172A]">{t('resourceDetail.address')}</p>
+                    <p className="font-medium text-[#0F172A] text-sm">Address</p>
                     <p className="text-slate-600 text-sm">
                       {resource.address}<br />
                       {resource.city}, {resource.state} {resource.zip_code}
@@ -334,7 +404,7 @@ const Resources = () => {
                       <Phone className="w-5 h-5 text-slate-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-[#0F172A]">{t('resourceDetail.phone')}</p>
+                      <p className="font-medium text-[#0F172A] text-sm">Phone</p>
                       <a href={`tel:${resource.phone}`} className="text-[#0284C7] hover:underline text-sm">
                         {resource.phone}
                       </a>
@@ -348,7 +418,7 @@ const Resources = () => {
                       <Globe className="w-5 h-5 text-slate-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-[#0F172A]">{t('resourceDetail.website')}</p>
+                      <p className="font-medium text-[#0F172A] text-sm">Website</p>
                       <a 
                         href={resource.website} 
                         target="_blank" 
@@ -367,37 +437,13 @@ const Resources = () => {
                       <Clock className="w-5 h-5 text-slate-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-[#0F172A]">{t('resourceDetail.hours')}</p>
+                      <p className="font-medium text-[#0F172A] text-sm">Hours</p>
                       <p className="text-slate-600 text-sm">{resource.hours}</p>
                     </div>
                   </div>
                 )}
               </div>
             </div>
-
-            {resource.services.length > 0 && (
-              <div className="space-y-3">
-                <h4 className="font-semibold text-[#0F172A]">{t('resourceDetail.services')}</h4>
-                <div className="flex flex-wrap gap-2">
-                  {resource.services.map((service, idx) => (
-                    <Badge 
-                      key={idx}
-                      variant="secondary"
-                      className="bg-slate-100 text-slate-700 font-normal"
-                    >
-                      {service}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {resource.eligibility && (
-              <div className="space-y-2">
-                <h4 className="font-semibold text-[#0F172A]">{t('resourceDetail.eligibility')}</h4>
-                <p className="text-slate-600 text-sm">{resource.eligibility}</p>
-              </div>
-            )}
           </div>
         </ScrollArea>
 
