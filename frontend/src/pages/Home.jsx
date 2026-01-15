@@ -189,6 +189,35 @@ const Home = () => {
         </div>
       </section>
 
+      {/* FAQ Banner */}
+      <section className="py-10 bg-white border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-[#0e3d69] to-[#1B3B5A] rounded-xl p-8">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
+                <HelpCircle className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1">Have Questions?</h3>
+                <p className="text-white/80 text-sm max-w-md">
+                  Get answers about IDs, voting rights, expungement, benefits, and more with links to official Minnesota resources.
+                </p>
+              </div>
+            </div>
+            <Link to="/how-to">
+              <Button 
+                data-testid="faq-banner-btn"
+                size="lg"
+                className="bg-white hover:bg-gray-100 text-[#0e3d69] font-semibold px-8 shadow-lg"
+              >
+                View FAQs
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Emergency Hotlines */}
       <EmergencyHotlines />
 
