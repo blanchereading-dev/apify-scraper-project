@@ -193,13 +193,13 @@ const Home = () => {
       {/* FAQ Banner */}
       <section className="bg-[#e8f2fa] border-y border-[#7cafde]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center gap-6 py-4">
-            <HelpCircle className="w-5 h-5 text-[#0e3d69]" />
-            <p className="text-[#0e3d69] text-sm">
+          <div className="flex items-center justify-center gap-8 py-6">
+            <HelpCircle className="w-6 h-6 text-[#0e3d69]" />
+            <p className="text-[#0e3d69] text-base">
               Questions about <span className="font-medium">IDs</span>, <span className="font-medium">voting rights</span>, <span className="font-medium">expungement</span>, or <span className="font-medium">benefits</span>?
             </p>
-            <Link to="/how-to" className="text-[#0e3d69] font-semibold text-sm hover:underline flex items-center gap-1">
-              View FAQs <ArrowRight className="w-4 h-4" />
+            <Link to="/how-to" className="text-[#0e3d69] font-semibold text-base hover:underline flex items-center gap-1">
+              View FAQs <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>
