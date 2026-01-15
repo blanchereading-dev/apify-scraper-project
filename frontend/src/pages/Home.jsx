@@ -99,10 +99,11 @@ const Home = () => {
               <Link to="/resources">
                 <Button 
                   data-testid="hero-find-resources-btn"
-                  className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-medium px-6 transition-all duration-200 w-full sm:w-auto"
+                  size="lg"
+                  className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-semibold px-8 py-6 text-lg transition-all duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto"
                 >
                   Find Resources
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
             </div>
@@ -111,22 +112,27 @@ const Home = () => {
       </section>
 
       {/* How It Works - Compact */}
-      <section className="py-8 bg-white border-b border-slate-100">
+      <section className="py-6 bg-slate-50 border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#0284C7] rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
-              <span className="text-slate-700 font-medium">Search by category</span>
+              <div className="w-8 h-8 bg-[#1B3B5A] rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
+              <span className="text-slate-600 text-sm">Filter by need</span>
             </div>
-            <div className="hidden md:block w-12 h-px bg-slate-300"></div>
+            <div className="hidden md:block w-8 h-px bg-slate-300"></div>
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#0284C7] rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
-              <span className="text-slate-700 font-medium">View contact details</span>
+              <div className="w-8 h-8 bg-[#1B3B5A] rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
+              <span className="text-slate-600 text-sm">Save to your list</span>
             </div>
-            <div className="hidden md:block w-12 h-px bg-slate-300"></div>
+            <div className="hidden md:block w-8 h-px bg-slate-300"></div>
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#0284C7] rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
-              <span className="text-slate-700 font-medium">Reach out for help</span>
+              <div className="w-8 h-8 bg-[#1B3B5A] rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
+              <span className="text-slate-600 text-sm">Call or visit</span>
+            </div>
+            <div className="hidden md:block w-8 h-px bg-slate-300"></div>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-[#1B3B5A] rounded-full flex items-center justify-center text-white text-sm font-bold">?</div>
+              <span className="text-slate-600 text-sm">Chat for help</span>
             </div>
           </div>
         </div>
