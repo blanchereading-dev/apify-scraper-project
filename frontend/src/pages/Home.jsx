@@ -110,25 +110,21 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Strip */}
-      <section className="py-4 bg-[#0e3d69]">
+      {/* How To Use Strip */}
+      <section className="py-5 bg-[#0e3d69]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-3">
-            <div className="flex items-center gap-2 text-white/90">
-              <Search className="w-4 h-4 text-[#7cafde]" />
-              <span className="text-sm">76 resources</span>
+          <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-4">
+            <div className="flex items-center gap-3 text-white">
+              <div className="w-8 h-8 rounded-full bg-[#7cafde]/30 flex items-center justify-center text-sm font-bold">1</div>
+              <span className="text-sm">Browse or search by category</span>
             </div>
-            <div className="flex items-center gap-2 text-white/90">
-              <MapPin className="w-4 h-4 text-[#7cafde]" />
-              <span className="text-sm">Statewide coverage</span>
+            <div className="flex items-center gap-3 text-white">
+              <div className="w-8 h-8 rounded-full bg-[#7cafde]/30 flex items-center justify-center text-sm font-bold">2</div>
+              <span className="text-sm">Save resources you need</span>
             </div>
-            <div className="flex items-center gap-2 text-white/90">
-              <Heart className="w-4 h-4 text-[#7cafde]" />
-              <span className="text-sm">Save favorites</span>
-            </div>
-            <div className="flex items-center gap-2 text-white/90">
-              <MessageCircle className="w-4 h-4 text-[#7cafde]" />
-              <span className="text-sm">24/7 AI assistant</span>
+            <div className="flex items-center gap-3 text-white">
+              <div className="w-8 h-8 rounded-full bg-[#7cafde]/30 flex items-center justify-center text-sm font-bold">3</div>
+              <span className="text-sm">Call or visit to get help</span>
             </div>
           </div>
         </div>
